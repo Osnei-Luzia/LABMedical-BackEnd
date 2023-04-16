@@ -45,7 +45,7 @@ public class Pessoa {
     //verificar tipo String ou number
     @Column(length=32)
     private String telefone;
-    @Column(length=32)
+    @Column(length=64)
     private String email;
     @Column(length=64)
     private String naturalidade;

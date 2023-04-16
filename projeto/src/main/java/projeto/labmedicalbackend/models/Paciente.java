@@ -24,6 +24,6 @@ public class Paciente extends Pessoa{
     private String convenio;
     private String numeroCarteira;
     private Date validade;
-    @ManyToOne
-    private Endereco endereco;
+    //@ManyToOne
+    private String endereco;
 }
