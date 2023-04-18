@@ -23,6 +23,7 @@ public class Exame {
     @Column(nullable = false)
     private Date dataHora;
     //fazer pelo timestamp da inserção
+    //validar data
 
     @Column(nullable = false)
     private String tipo;
