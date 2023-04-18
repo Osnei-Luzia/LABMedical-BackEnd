@@ -23,6 +23,7 @@ public class Consulta {
     @Column(nullable = false)
     private Date dataHora;
     //fazer pelo timestamp da inserção
+    //validar data
 
     @Column(length = 512, nullable = false)
     private String descricao;
