@@ -56,10 +56,10 @@ public class PacienteService {
 
     public void deletarPaciente(Long id){
         Paciente paciente = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
-        if(paciente.getExames()<1){
+        if(paciente.getExames()<1&&paciente.getConsultas()<1){
             repository.delete(paciente);
         }else{
-            throw new IllegalArgumentException("Paciente possui exames listados");//montar body com 409 conflict
+            throw new IllegalArgumentException("Paciente possui exames ou consultas listados");//montar body com 409 conflict
         }
     }
 }
