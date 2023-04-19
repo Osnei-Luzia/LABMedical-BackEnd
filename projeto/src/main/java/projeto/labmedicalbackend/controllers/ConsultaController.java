@@ -1,6 +1,7 @@
 package projeto.labmedicalbackend.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import projeto.labmedicalbackend.controllers.dtos.consulta.RequestAtualizarConsultaDTO;
 import projeto.labmedicalbackend.controllers.dtos.consulta.RequestCriarConsultaDTO;
@@ -21,12 +22,12 @@ public class ConsultaController {
         return ResponseEntity.ok().body(service.buscarConsultaById(id));
     }
     @PostMapping
-    public ResponseEntity<Consulta> criarConsulta(@RequestBody RequestCriarConsultaDTO request){
+    public ResponseEntity<Consulta> criarConsulta(@RequestBody @Validated RequestCriarConsultaDTO request){
         return ResponseEntity.ok().body(service.salvarConsulta(request));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Consulta> atualizarConsulta(@RequestBody RequestAtualizarConsultaDTO request, @PathVariable Long id){
+    public ResponseEntity<Consulta> atualizarConsulta(@RequestBody @Validated RequestAtualizarConsultaDTO request, @PathVariable Long id){
         return ResponseEntity.ok().body(service.alterarConsulta(request,id));
     }
 

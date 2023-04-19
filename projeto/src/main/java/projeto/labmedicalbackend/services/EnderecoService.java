@@ -3,7 +3,7 @@ package projeto.labmedicalbackend.services;
 import org.springframework.stereotype.Service;
 import projeto.labmedicalbackend.controllers.dtos.endereco.ResponseBuscarEnderecoDTO;
 import projeto.labmedicalbackend.controllers.dtos.endereco.RequestCriarEnderecoDTO;
-import projeto.labmedicalbackend.mappers.EnderecoMapper;
+import projeto.labmedicalbackend.services.mappers.EnderecoMapper;
 import projeto.labmedicalbackend.models.Endereco;
 import projeto.labmedicalbackend.repositories.EnderecoRepository;
 

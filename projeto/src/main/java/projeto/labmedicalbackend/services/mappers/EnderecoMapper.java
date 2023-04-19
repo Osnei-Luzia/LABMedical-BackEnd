@@ -1,4 +1,4 @@
-package projeto.labmedicalbackend.mappers;
+package projeto.labmedicalbackend.services.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

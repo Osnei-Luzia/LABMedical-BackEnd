@@ -4,9 +4,8 @@ import org.springframework.stereotype.Service;
 import projeto.labmedicalbackend.controllers.dtos.consulta.RequestAtualizarConsultaDTO;
 import projeto.labmedicalbackend.controllers.dtos.consulta.RequestCriarConsultaDTO;
 import projeto.labmedicalbackend.controllers.dtos.consulta.ResponseBuscarConsultaDTO;
-import projeto.labmedicalbackend.mappers.ConsultaMapper;
+import projeto.labmedicalbackend.services.mappers.ConsultaMapper;
 import projeto.labmedicalbackend.models.Consulta;
-import projeto.labmedicalbackend.models.Paciente;
 import projeto.labmedicalbackend.repositories.ConsultaRepository;
 
 @Service
@@ -36,7 +35,5 @@ public class ConsultaService {
     public void deletarConsulta(Long id){
         Consulta consulta = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Consulta não encontrada"));
         repository.delete(consulta);
-
-
     }
 }

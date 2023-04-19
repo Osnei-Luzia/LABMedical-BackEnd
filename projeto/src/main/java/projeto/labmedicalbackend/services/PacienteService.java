@@ -1,11 +1,10 @@
 package projeto.labmedicalbackend.services;
 
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import projeto.labmedicalbackend.controllers.dtos.paciente.RequestAtualizarPacienteDTO;
 import projeto.labmedicalbackend.controllers.dtos.paciente.RequestCriarPacienteDTO;
 import projeto.labmedicalbackend.controllers.dtos.paciente.ResponseBuscarPacienteDTO;
-import projeto.labmedicalbackend.mappers.PacienteMapper;
+import projeto.labmedicalbackend.services.mappers.PacienteMapper;
 import projeto.labmedicalbackend.models.Paciente;
 import projeto.labmedicalbackend.repositories.PacienteRepository;
 

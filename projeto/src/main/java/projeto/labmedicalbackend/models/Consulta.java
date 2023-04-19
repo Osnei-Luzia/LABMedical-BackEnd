@@ -38,7 +38,7 @@ public class Consulta {
     @NotNull
     private String dosagens;
     @NotNull
-    @OneToOne(orphanRemoval = true, cascade = CascadeType.PERSIST,  fetch = FetchType.EAGER)//resolver deleçao de OneToOne
+    @OneToOne()//resolver deleçao de OneToOne
     private Paciente paciente_id;
     @NotNull
     @ManyToOne
