@@ -1,15 +1,12 @@
 package projeto.labmedicalbackend.services;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import projeto.labmedicalbackend.controllers.dtos.usuario.RequestAtualizarSenhaDTO;
 import projeto.labmedicalbackend.controllers.dtos.usuario.RequestAtualizarUsuarioDTO;
 import projeto.labmedicalbackend.controllers.dtos.usuario.RequestCriarUsuarioDTO;
-import projeto.labmedicalbackend.mappers.UsuarioMapper;
+import projeto.labmedicalbackend.services.mappers.UsuarioMapper;
 import projeto.labmedicalbackend.models.Usuario;
 import projeto.labmedicalbackend.repositories.UsuarioRepository;
-
-import java.util.Objects;
 
 @Service
 public class UsuarioService {

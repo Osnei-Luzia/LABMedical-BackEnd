@@ -1,4 +1,4 @@
-package projeto.labmedicalbackend.mappers;
+package projeto.labmedicalbackend.services.mappers;
 
 import org.mapstruct.*;
 import projeto.labmedicalbackend.controllers.dtos.usuario.RequestAtualizarSenhaDTO;
@@ -10,7 +10,6 @@ import projeto.labmedicalbackend.models.Usuario;
 public interface UsuarioMapper {
     Usuario map(RequestCriarUsuarioDTO source);
     void update(@MappingTarget Usuario target, RequestAtualizarUsuarioDTO source);
-
     void update(@MappingTarget Usuario target, RequestAtualizarSenhaDTO source);
 }
 
