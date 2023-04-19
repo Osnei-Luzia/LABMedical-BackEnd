@@ -1,8 +1,8 @@
 package projeto.labmedicalbackend.services;
 
 import org.springframework.stereotype.Service;
-import projeto.labmedicalbackend.controllers.dtos.endereco.EnderecoBuscarDTO;
-import projeto.labmedicalbackend.controllers.dtos.endereco.EnderecoCriarDTO;
+import projeto.labmedicalbackend.controllers.dtos.endereco.ResponseBuscarEnderecoDTO;
+import projeto.labmedicalbackend.controllers.dtos.endereco.RequestCriarEnderecoDTO;
 import projeto.labmedicalbackend.mappers.EnderecoMapper;
 import projeto.labmedicalbackend.models.Endereco;
 import projeto.labmedicalbackend.repositories.EnderecoRepository;
@@ -20,11 +20,11 @@ public class EnderecoService {
         this.mapper = mapper;
     }
 
-    public Endereco salvarEndereco(EnderecoCriarDTO request) {
+    public Endereco salvarEndereco(RequestCriarEnderecoDTO request) {
         return repository.save(mapper.map(request));
     }
 
-    public List<EnderecoBuscarDTO> procurarEnderecos() {
+    public List<ResponseBuscarEnderecoDTO> procurarEnderecos() {
         return repository.findAll().stream().map(
                         endereco -> mapper.map(endereco))
                         .collect(Collectors.toList());
