@@ -1,8 +1,8 @@
 package projeto.labmedicalbackend.controllers;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +14,10 @@ import projeto.labmedicalbackend.models.Usuario;
 import projeto.labmedicalbackend.services.UsuarioService;
 
 
-import java.net.URI;
-import java.util.List;
-
-
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
     private final UsuarioService service;
-
     public UsuarioController(UsuarioService service) {
         this.service = service;
     }
@@ -31,8 +26,7 @@ public class UsuarioController {
     public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody @Validated RequestCriarUsuarioDTO request, UriComponentsBuilder uriBuilder) {
         //URI uri = uriBuilder.path("/produtos/{id}").buildAndExpand().toUri();
         //caminho e função que retorna o objeto
-        return ResponseEntity.ok().body(service.salvarUsuario(request));//usar created
-        //trocar por created
+        return ResponseEntity.status(201).body(service.salvarUsuario(request));
     }
 
     @PutMapping("/{id}")

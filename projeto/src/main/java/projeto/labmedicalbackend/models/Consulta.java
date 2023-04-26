@@ -19,26 +19,23 @@ public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 512)
+    @Column(length = 512, nullable = false)
     @NotBlank
     private String motivo;
-
+    @Column(nullable = false)
     @NotNull
     private Date dataHora;
-    //fazer pelo timestamp da inserção
-    //validar data
-
-    @Column(length = 512)
-    @NotNull
+    @Column(length = 512, nullable = false)
+    @NotBlank
     private String descricao;
-    @Column(length = 512)
-    @NotNull
+    @Column(length = 512, nullable = false)
+    @NotBlank
     private String medicacao;
-    @Column(length = 512)
-    @NotNull
+    @Column(length = 512, nullable = false)
+    @NotBlank
     private String dosagens;
     @NotNull
-    @OneToOne()//resolver deleçao de OneToOne
+    @ManyToOne
     private Paciente paciente_id;
     @NotNull
     @ManyToOne

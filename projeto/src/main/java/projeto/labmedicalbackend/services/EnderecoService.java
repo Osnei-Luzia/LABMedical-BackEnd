@@ -3,6 +3,7 @@ package projeto.labmedicalbackend.services;
 import org.springframework.stereotype.Service;
 import projeto.labmedicalbackend.controllers.dtos.endereco.ResponseBuscarEnderecoDTO;
 import projeto.labmedicalbackend.controllers.dtos.endereco.RequestCriarEnderecoDTO;
+import projeto.labmedicalbackend.exceptions.DataExistsException;
 import projeto.labmedicalbackend.services.mappers.EnderecoMapper;
 import projeto.labmedicalbackend.models.Endereco;
 import projeto.labmedicalbackend.repositories.EnderecoRepository;
@@ -25,8 +26,20 @@ public class EnderecoService {
     }
 
     public List<ResponseBuscarEnderecoDTO> procurarEnderecos() {
-        return repository.findAll().stream().map(
-                        endereco -> mapper.map(endereco))
-                        .collect(Collectors.toList());
+        List<ResponseBuscarEnderecoDTO> lista = repository.findAll().stream().map(
+                                                endereco -> mapper.map(endereco))
+                                                .collect(Collectors.toList());
+        if(lista.size()<1){
+            throw new DataExistsException("Não há endereços cadastrados");
+        }
+        return  lista;
+    }
+
+    public Endereco procurarEnderecoById(Long id){
+        return repository.findById(id).orElseThrow(()->new DataExistsException("Endereço não cadastrado"));
+    }
+
+    public boolean existsEnderecoById(Long id){
+        return repository.existsEnderecoById(id);
     }
 }

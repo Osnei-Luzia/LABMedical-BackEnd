@@ -1,6 +1,5 @@
 package projeto.labmedicalbackend.controllers;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +36,7 @@ public class PacienteController {
 
     @PostMapping
     public ResponseEntity<Paciente> criarPaciente(@RequestBody @Validated RequestCriarPacienteDTO request) {
-        return ResponseEntity.ok().body(service.salvarPaciente(request));
+        return ResponseEntity.ok().body(service.salvarPaciente(request));//fazer created
     }
 
     @PutMapping("/{idPaciente}")

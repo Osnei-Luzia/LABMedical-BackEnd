@@ -19,25 +19,24 @@ public class Exame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     @NotBlank
     private String nome;
-
+    @Column(nullable = false)
     @NotNull
     private Date dataHora;
-    //fazer pelo timestamp da inserção
-    //validar data
-
+    @Column(nullable = false)
     @NotBlank
     private String tipo;
+    @Column(nullable = false)
     @NotBlank
     private String laboratorio;
     private String arquivo;
-    //conferir arquivo
-    @Column(length = 512)
+    @Column(length = 512, nullable = false)
     @NotBlank
     private String resultado;
     @ManyToOne
     private Paciente paciente_id;
-    @ManyToOne//checar cardinalidade
+    @ManyToOne
     private Usuario usuario_id;
 }

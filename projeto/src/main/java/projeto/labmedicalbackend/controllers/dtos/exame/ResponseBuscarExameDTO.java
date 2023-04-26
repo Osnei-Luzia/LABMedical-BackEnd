@@ -10,12 +10,21 @@ import java.util.Date;
 
 @Data
 public class ResponseBuscarExameDTO {
+    private Long id;
     private String nome;
     private Date dataHora;
     private String tipo;
     private String laboratorio;
     private String arquivo;
     private String resultado;
-    private Paciente paciente_id;
-    private Usuario usuario_id;
+    private Long paciente_id;
+    private Long usuario_id;
+
+    public void setPaciente_id(Paciente paciente) {
+        this.paciente_id = paciente.getId();
+    }
+
+    public void setUsuario_id(Usuario usuario) {
+        this.usuario_id = usuario.getId();
+    }
 }

@@ -24,12 +24,12 @@ public class ExameController {
     }
 
     @PostMapping
-    public ResponseEntity<Exame> criarExame(@RequestBody @Validated RequestCriarExameDTO request) {
-        return ResponseEntity.ok().body(service.salvarExame(request));
+    public ResponseEntity<ResponseBuscarExameDTO> criarExame(@RequestBody @Validated RequestCriarExameDTO request) {
+        return ResponseEntity.ok().body(service.salvarExame(request));//fazer created
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Exame> atualizarExame(@RequestBody @Validated RequestAtualizarExameDTO request, @PathVariable Long id){
+    public ResponseEntity<ResponseBuscarExameDTO> atualizarExame(@RequestBody @Validated RequestAtualizarExameDTO request, @PathVariable Long id){
         return ResponseEntity.ok().body(service.alterarExame(request,id));
     }
 

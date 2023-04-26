@@ -1,6 +1,5 @@
 package projeto.labmedicalbackend.controllers.dtos.consulta;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -12,11 +11,9 @@ import java.util.Date;
 public class RequestCriarConsultaDTO {
     @NotBlank
     private String motivo;
-    @NotNull
     private Date dataHora;
     //fazer pelo timestamp da inserção
     //validar data
-
     @NotNull
     private String descricao;
     @NotNull

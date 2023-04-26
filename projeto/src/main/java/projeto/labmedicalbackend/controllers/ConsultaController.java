@@ -19,15 +19,15 @@ public class ConsultaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ResponseBuscarConsultaDTO> buscarConsultaById(@PathVariable Long id){
-        return ResponseEntity.ok().body(service.buscarConsultaById(id));
+        return ResponseEntity.ok().body(service.procurarConsultaById(id));
     }
     @PostMapping
-    public ResponseEntity<Consulta> criarConsulta(@RequestBody @Validated RequestCriarConsultaDTO request){
-        return ResponseEntity.ok().body(service.salvarConsulta(request));
+    public ResponseEntity<ResponseBuscarConsultaDTO> criarConsulta(@RequestBody @Validated RequestCriarConsultaDTO request){
+        return ResponseEntity.ok().body(service.salvarConsulta(request));//fazer created
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Consulta> atualizarConsulta(@RequestBody @Validated RequestAtualizarConsultaDTO request, @PathVariable Long id){
+    public ResponseEntity<ResponseBuscarConsultaDTO> atualizarConsulta(@RequestBody @Validated RequestAtualizarConsultaDTO request, @PathVariable Long id){
         return ResponseEntity.ok().body(service.alterarConsulta(request,id));
     }
 
