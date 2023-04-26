@@ -26,9 +26,13 @@ public class EnderecoService {
     }
 
     public List<ResponseBuscarEnderecoDTO> procurarEnderecos() {
-        return repository.findAll().stream().map(
-                        endereco -> mapper.map(endereco))
-                        .collect(Collectors.toList());
+        List<ResponseBuscarEnderecoDTO> lista = repository.findAll().stream().map(
+                                                endereco -> mapper.map(endereco))
+                                                .collect(Collectors.toList());
+        if(lista.size()<1){
+            throw new DataExistsException("Não há endereços cadastrados");
+        }
+        return  lista;
     }
 
     public Endereco procurarEnderecoById(Long id){
