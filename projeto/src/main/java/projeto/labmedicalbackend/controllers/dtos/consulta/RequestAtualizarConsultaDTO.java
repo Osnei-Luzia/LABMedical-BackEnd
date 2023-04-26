@@ -10,16 +10,10 @@ import java.util.Date;
 
 @Data
 public class RequestAtualizarConsultaDTO {
-    @NotBlank
     private String motivo;
-    @NotNull
     private String descricao;
-    @NotNull
     private String medicacao;
-    @NotNull
     private String dosagens;
-    @NotNull
     private Paciente paciente_id;
-    @NotNull
     private Usuario usuario_id;
 }

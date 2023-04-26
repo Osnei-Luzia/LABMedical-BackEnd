@@ -72,5 +72,9 @@ public class PacienteService {
         Paciente paciente = repository.findById(id).orElseThrow(() -> new DataExistsException("Paciente não encontrado"));
         repository.delete(paciente);
     }
+
+    public boolean existsPacienteById(Long id){
+        return repository.existsById(id);
+    }
 }
 

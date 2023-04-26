@@ -38,4 +38,8 @@ public class UsuarioService {
         mapper.update(usuario, request);
         return repository.save(usuario);
     }
+
+    public boolean existsUsuarioById(Long id){
+        return repository.existsById(id);
+    }
 }
