@@ -6,9 +6,9 @@ import jakarta.validation.ConstraintValidatorContext;
 import java.text.SimpleDateFormat;
 import java.util.Objects;
 
-public class DataNascimentoValidator implements ConstraintValidator<DataNascimentoConstraint, String> {
+public class DateValidator implements ConstraintValidator<DateConstraint, String> {
     @Override
-    public void initialize(DataNascimentoConstraint dataNascimento) {
+    public void initialize(DateConstraint dataNascimento) {
     }
 
     @Override

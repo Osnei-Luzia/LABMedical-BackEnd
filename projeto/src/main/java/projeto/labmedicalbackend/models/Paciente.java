@@ -29,12 +29,7 @@ public class Paciente extends Pessoa{
     private String contatoEmergencia;
     private String convenio;
     private String numeroCarteira;
-
-    private Date validade;
+    private String validade;
     @ManyToOne
     private Endereco endereco;
-    @NotNull
-    private Integer exames;
-    @NotNull
-    private Integer consultas;
 }

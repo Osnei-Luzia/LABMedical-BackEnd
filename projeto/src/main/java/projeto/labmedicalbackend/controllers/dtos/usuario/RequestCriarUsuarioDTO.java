@@ -6,7 +6,7 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 import projeto.labmedicalbackend.models.enums.Especializacao;
 import projeto.labmedicalbackend.models.enums.EstadoCivil;
-import projeto.labmedicalbackend.validators.DataNascimentoConstraint;
+import projeto.labmedicalbackend.validators.DateConstraint;
 import projeto.labmedicalbackend.validators.EnumConstraint;
 
 
@@ -19,7 +19,7 @@ public class RequestCriarUsuarioDTO {
     private String genero;
     @NotBlank
     @Pattern(regexp = "^[0-9]{1,2}\\/[0-9]{1,2}\\/[0-9]{4}$", message = "use o formato dd/MM/aaaa")
-    @DataNascimentoConstraint
+    @DateConstraint
     private String dataNascimento;
     @CPF
     @NotBlank

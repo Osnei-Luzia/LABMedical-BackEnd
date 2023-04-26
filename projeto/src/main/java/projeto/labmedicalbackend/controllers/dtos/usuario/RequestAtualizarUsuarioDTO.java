@@ -5,7 +5,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import projeto.labmedicalbackend.models.enums.Especializacao;
 import projeto.labmedicalbackend.models.enums.EstadoCivil;
-import projeto.labmedicalbackend.validators.DataNascimentoConstraint;
+import projeto.labmedicalbackend.validators.DateConstraint;
 import projeto.labmedicalbackend.validators.EnumConstraint;
 
 @Data
@@ -14,7 +14,7 @@ public class RequestAtualizarUsuarioDTO {
     private String nomeCompleto;
     private String genero;
     @Pattern(regexp = "^[0-9]{1,2}\\/[0-9]{1,2}\\/[0-9]{4}$", message = "use o formato dd/MM/aaaa")
-    @DataNascimentoConstraint
+    @DateConstraint
     private String dataNascimento;
     @EnumConstraint(targetClassType = EstadoCivil.class)
     private EstadoCivil estadoCivil;

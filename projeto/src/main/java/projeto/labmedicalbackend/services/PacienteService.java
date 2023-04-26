@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import projeto.labmedicalbackend.controllers.dtos.paciente.RequestAtualizarPacienteDTO;
 import projeto.labmedicalbackend.controllers.dtos.paciente.RequestCriarPacienteDTO;
 import projeto.labmedicalbackend.controllers.dtos.paciente.ResponseBuscarPacienteDTO;
+import projeto.labmedicalbackend.exceptions.CpfExistsException;
+import projeto.labmedicalbackend.exceptions.DataExistsException;
 import projeto.labmedicalbackend.services.mappers.PacienteMapper;
 import projeto.labmedicalbackend.models.Paciente;
 import projeto.labmedicalbackend.repositories.PacienteRepository;
@@ -15,51 +17,60 @@ import java.util.stream.Collectors;
 public class PacienteService {
     private final PacienteRepository repository;
     private final PacienteMapper mapper;
+    private final EnderecoService enderecoService;
 
-    public PacienteService(PacienteRepository repository, PacienteMapper mapper) {
+    public PacienteService(PacienteRepository repository, PacienteMapper mapper, EnderecoService enderecoService) {
         this.repository = repository;
         this.mapper = mapper;
+        this.enderecoService = enderecoService;
     }
 
     public Paciente salvarPaciente(RequestCriarPacienteDTO request) {
-        //checar se endereco existe, usar outro repository?
+        if (!enderecoService.existsEnderecoById(request.getEndereco().getId())) {
+            throw new DataExistsException("Endereço não cadastrado");
+        }
         if (!repository.existsPacienteByCpf(request.getCpf())) {
             Paciente paciente = mapper.map(request);
-            paciente.setExames(0);
-            paciente.setConsultas(0);
-            //default em banco = 0
-            return repository.save(paciente);
+            paciente = repository.save(paciente);
+            paciente.setEndereco(enderecoService.procurarEnderecoById(paciente.getEndereco().getId()));
+            return paciente;
         } else {
-            throw new IllegalArgumentException("CPF já existe");//montar body com 409 conflict
+            throw new CpfExistsException("CPF em uso por outro paciente");
         }
     }
 
     public Paciente alterarPaciente(RequestAtualizarPacienteDTO request, Long idPaciente) {
-        Paciente paciente = repository.findById(idPaciente).orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
-        mapper.update(paciente, request);
-        return repository.save(paciente);
-    }
-
-    public ResponseBuscarPacienteDTO procurarPacientes(String nome){
-        return mapper.map(repository.findByNomeCompleto(nome).orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado")));
-    }
-    public List<ResponseBuscarPacienteDTO> procurarPacientes(){
-        return repository.findAll().stream().map(
-                paciente -> mapper.map(paciente))
-                .collect(Collectors.toList());
-    }
-
-    public ResponseBuscarPacienteDTO procurarPacienteById(Long id){
-        return mapper.map(repository.findById(id).orElseThrow(() ->new IllegalArgumentException("Paciente não encontrado")));
-    }
-
-    public void deletarPaciente(Long id){
-        Paciente paciente = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
-        if(paciente.getExames()<1&&paciente.getConsultas()<1){
-            repository.delete(paciente);
-        }else{
-            throw new IllegalArgumentException("Paciente possui exames ou consultas listados");//montar body com 409 conflict
+        Paciente paciente = repository.findById(idPaciente).orElseThrow(() -> new DataExistsException("Paciente não encontrado"));
+        if (!enderecoService.existsEnderecoById(request.getEndereco().getId())) {
+            throw new DataExistsException("Endereço não cadastrado");
         }
+        mapper.update(paciente, request);
+        paciente = repository.save(paciente);
+        paciente.setEndereco(enderecoService.procurarEnderecoById(paciente.getEndereco().getId()));
+        return paciente;
+    }
+
+    public ResponseBuscarPacienteDTO procurarPacientes(String nome) {
+        return mapper.map(repository.findByNomeCompleto(nome).orElseThrow(() -> new DataExistsException("Paciente não encontrado")));
+    }
+
+    public List<ResponseBuscarPacienteDTO> procurarPacientes() {
+        List<ResponseBuscarPacienteDTO> lista = repository.findAll().stream().map(
+                                                paciente -> mapper.map(paciente))
+                                                .collect(Collectors.toList());
+        if(lista.size()<1){
+            throw new DataExistsException("Não há pacientes cadastrados");
+        }
+        return lista;
+    }
+
+    public ResponseBuscarPacienteDTO procurarPacienteById(Long id) {
+        return mapper.map(repository.findById(id).orElseThrow(() -> new DataExistsException("Paciente não encontrado")));
+    }
+
+    public void deletarPaciente(Long id) {
+        Paciente paciente = repository.findById(id).orElseThrow(() -> new DataExistsException("Paciente não encontrado"));
+        repository.delete(paciente);
     }
 }
 
