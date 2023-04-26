@@ -12,19 +12,16 @@ import java.util.Date;
 public class RequestCriarExameDTO {
     @NotBlank
     private String nome;
-    @NotNull
     private Date dataHora;
-    //fazer pelo timestamp da inserção
-    //validar data
-
     @NotBlank
     private String tipo;
     @NotBlank
     private String laboratorio;
     private String arquivo;
-    //conferir arquivo
     @NotBlank
     private String resultado;
+    @NotNull
     private Paciente paciente_id;
+    @NotNull
     private Usuario usuario_id;
 }

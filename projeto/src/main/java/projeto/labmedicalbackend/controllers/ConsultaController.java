@@ -19,7 +19,7 @@ public class ConsultaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ResponseBuscarConsultaDTO> buscarConsultaById(@PathVariable Long id){
-        return ResponseEntity.ok().body(service.buscarConsultaById(id));
+        return ResponseEntity.ok().body(service.procurarConsultaById(id));
     }
     @PostMapping
     public ResponseEntity<ResponseBuscarConsultaDTO> criarConsulta(@RequestBody @Validated RequestCriarConsultaDTO request){

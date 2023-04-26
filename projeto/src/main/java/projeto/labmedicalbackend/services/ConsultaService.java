@@ -28,10 +28,18 @@ public class ConsultaService {
     }
 
     public ResponseBuscarConsultaDTO salvarConsulta(RequestCriarConsultaDTO request) {
-        if (!pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
+        if (!Objects.isNull(request.getPaciente_id().getId())) {
+            if (!pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
+                throw new DataExistsException("Paciente não cadastrado");
+            }
+        } else {
             throw new DataExistsException("Paciente não cadastrado");
         }
-        if (!usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
+        if (!Objects.isNull(request.getUsuario_id().getId())) {
+            if (!usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
+                throw new DataExistsException("Usuário não cadastrado");
+            }
+        } else {
             throw new DataExistsException("Usuário não cadastrado");
         }
         request.setDataHora(new Date());//configurar timestamp?
@@ -41,6 +49,7 @@ public class ConsultaService {
 
     public ResponseBuscarConsultaDTO alterarConsulta(RequestAtualizarConsultaDTO request, Long idConsulta) {
         Consulta consulta = repository.findById(idConsulta).orElseThrow(() -> new DataExistsException("Consulta não encontrada"));
+        //checar id dentro de paciente e usuario
         if (!Objects.isNull(request.getPaciente_id())) {
             if (!pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
                 throw new DataExistsException("Paciente não cadastrado");
@@ -60,7 +69,7 @@ public class ConsultaService {
         return response;
     }
 
-    public ResponseBuscarConsultaDTO buscarConsultaById(Long id) {
+    public ResponseBuscarConsultaDTO procurarConsultaById(Long id) {
         return mapper.map(repository.findById(id).orElseThrow(() -> new DataExistsException("Consulta não encontrada")));
     }
 
