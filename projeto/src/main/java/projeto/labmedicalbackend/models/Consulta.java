@@ -38,7 +38,7 @@ public class Consulta {
     @NotNull
     private String dosagens;
     @NotNull
-    @OneToOne()//resolver deleçao de OneToOne
+    @ManyToOne//resolver deleçao de OneToOne
     private Paciente paciente_id;
     @NotNull
     @ManyToOne

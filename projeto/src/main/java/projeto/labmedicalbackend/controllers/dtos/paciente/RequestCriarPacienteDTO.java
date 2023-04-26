@@ -1,14 +1,12 @@
 package projeto.labmedicalbackend.controllers.dtos.paciente;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 import projeto.labmedicalbackend.models.Endereco;
+import projeto.labmedicalbackend.models.enums.EstadoCivil;
 
 import java.util.Date;
 import java.util.List;
@@ -19,16 +17,15 @@ public class RequestCriarPacienteDTO {
 
     private String nomeCompleto;
     private String genero;
-
-    private Date dataNascimento;
+    @NotBlank
+    @Pattern(regexp = "^[0-9]{1,2}\\/[0-9]{1,2}\\/[0-9]{4}$")
+    private String dataNascimento;
     //validar data
     @CPF
     private String cpf;
     private String rg;
-    @Min(value = 1)
-    @Max(value = 5)
     @NotNull
-    private Integer estadoCivil;
+    private EstadoCivil estadoCivil;
     /*
      * Solteiro
      * Casado
@@ -43,16 +40,13 @@ public class RequestCriarPacienteDTO {
     private String naturalidade;
 
     //paciente
-    @ElementCollection
     private List<String> listaAlergias;
-    @ElementCollection
     private List<String> listaCuidados;
-    @Column(length = 64,nullable = false)
+    @Column(length = 64)
     @NotBlank
     private String contatoEmergencia;
     private String convenio;
     private String numeroCarteira;
-
     private Date validade;
     private Endereco endereco;
 }

@@ -2,14 +2,12 @@ package projeto.labmedicalbackend.controllers.dtos.paciente;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 import projeto.labmedicalbackend.models.Endereco;
+import projeto.labmedicalbackend.models.enums.EstadoCivil;
 
 import java.util.Date;
 import java.util.List;
@@ -20,15 +18,15 @@ public class RequestAtualizarPacienteDTO {
     private String nomeCompleto;
     private String genero;
 
-    private Date dataNascimento;
+    @NotBlank
+    @Pattern(regexp = "^[0-9]{1,2}\\/[0-9]{1,2}\\/[0-9]{4}$")
+    private String dataNascimento;
     //validar data
     @CPF
     private String cpf;
     private String rg;
-    @Min(value = 1)
-    @Max(value = 5)
     @NotNull
-    private Integer estadoCivil;
+    private EstadoCivil estadoCivil;
     /*
      * Solteiro
      * Casado

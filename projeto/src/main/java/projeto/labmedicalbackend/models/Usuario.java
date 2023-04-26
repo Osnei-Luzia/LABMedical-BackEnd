@@ -3,6 +3,7 @@ package projeto.labmedicalbackend.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import projeto.labmedicalbackend.models.enums.Especializacao;
 
 @Entity
 @Table(name = "usuarios")
@@ -15,21 +16,10 @@ public class Usuario extends Pessoa {
     @NotBlank
     private String crm;
     @Column(nullable = false)
-    @Min(value = 1)
-    @Max(value = 8)
     @NotNull
-    private Integer especializacao;
-    /*
-     * 1- Clínico Geral
-     * 2- Anestesista
-     * 3- Dermatologia
-     * 4- Ginecologia
-     * 5- Neurologia
-     * 6- Pediatria
-     * 7- Psiquiatria
-     * 8- Ortopedia
-     * */
+    @Enumerated(EnumType.ORDINAL)
+    private Especializacao especializacao;
     @Size(min = 8)
-    @NotBlank
+    @Column(nullable = false)
     private String senha;
 }

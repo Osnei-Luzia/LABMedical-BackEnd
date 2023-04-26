@@ -2,6 +2,7 @@ package projeto.labmedicalbackend.controllers.dtos.paciente;
 
 import lombok.Data;
 import projeto.labmedicalbackend.models.Endereco;
+import projeto.labmedicalbackend.models.enums.EstadoCivil;
 
 import java.util.Date;
 import java.util.List;
@@ -11,11 +12,10 @@ public class ResponseBuscarPacienteDTO {
     //pessoa
     private String nomeCompleto;
     private String genero;
-    private Date dataNascimento;
-    //validar data
+    private String dataNascimento;
     private String cpf;
     private String rg;
-    private Integer estadoCivil;
+    private EstadoCivil estadoCivil;
     /*
      * 1- Solteiro
      * 2- Casado
