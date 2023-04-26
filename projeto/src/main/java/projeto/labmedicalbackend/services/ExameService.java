@@ -77,4 +77,8 @@ public class ExameService {
         Exame exame = repository.findById(id).orElseThrow(() -> new DataExistsException("Exame não encontrado"));
         repository.delete(exame);
     }
+
+    public Long contarExames(){
+        return repository.count();
+    }
 }

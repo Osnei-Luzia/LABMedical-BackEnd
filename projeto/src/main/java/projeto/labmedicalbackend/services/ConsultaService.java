@@ -77,4 +77,8 @@ public class ConsultaService {
         Consulta consulta = repository.findById(id).orElseThrow(() -> new DataExistsException("Consulta não encontrada"));
         repository.delete(consulta);
     }
+
+    public Long contarConsultas(){
+        return repository.count();
+    }
 }

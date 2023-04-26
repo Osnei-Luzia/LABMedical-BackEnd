@@ -76,5 +76,9 @@ public class PacienteService {
     public boolean existsPacienteById(Long id){
         return repository.existsById(id);
     }
+
+    public Long contarPacientes(){
+        return repository.count();
+    }
 }
 
