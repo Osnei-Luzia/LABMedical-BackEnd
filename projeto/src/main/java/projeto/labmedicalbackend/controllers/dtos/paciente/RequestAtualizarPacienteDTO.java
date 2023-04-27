@@ -21,15 +21,7 @@ public class RequestAtualizarPacienteDTO {
     @Pattern(regexp = "^[0-9]{1,2}\\/[0-9]{1,2}\\/[0-9]{4}$", message = "use o formato dd/MM/aaaa")
     @DateConstraint
     private String dataNascimento;
-    @EnumConstraint(targetClassType = EstadoCivil.class, message = "estado civil inválido")
     private EstadoCivil estadoCivil;
-    /*
-     * 0- Solteiro
-     * 1- Casado
-     * 2- Separado
-     * 3- Divorciado
-     * 4- Viúvo
-     */
     private String telefone;
     @Email(message = "deve ser um endereço de e-mail válido. exemplo@exemplo")
     private String email;

@@ -48,6 +48,9 @@ public class PacienteService {
         if(Objects.isNull(request.getEndereco())){
             request.setEndereco(paciente.getEndereco());
         }
+        if(Objects.isNull(request.getEstadoCivil())){
+            request.setEstadoCivil(paciente.getEstadoCivil());
+        }
         mapper.update(paciente, request);
         paciente = repository.save(paciente);
         paciente.setEndereco(enderecoService.procurarEnderecoById(paciente.getEndereco().getId()));

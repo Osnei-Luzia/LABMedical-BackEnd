@@ -10,6 +10,8 @@ import projeto.labmedicalbackend.services.mappers.UsuarioMapper;
 import projeto.labmedicalbackend.models.Usuario;
 import projeto.labmedicalbackend.repositories.UsuarioRepository;
 
+import java.util.Objects;
+
 @Service
 public class UsuarioService {
     private final UsuarioRepository repository;
@@ -29,6 +31,12 @@ public class UsuarioService {
 
     public Usuario alterarUsuario(RequestAtualizarUsuarioDTO request, Long id) {
         Usuario usuario = repository.findById(id).orElseThrow(() -> new DataExistsException("Usuario não encontrado"));
+        if(Objects.isNull(request.getEstadoCivil())){
+            request.setEstadoCivil(usuario.getEstadoCivil());
+        }
+        if(Objects.isNull(request.getEspecializacao())){
+            request.setEspecializacao(usuario.getEspecializacao());
+        }
         mapper.update(usuario, request);
         return repository.save(usuario);
     }

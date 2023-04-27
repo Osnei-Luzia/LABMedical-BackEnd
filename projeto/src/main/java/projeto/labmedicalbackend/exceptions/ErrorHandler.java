@@ -25,17 +25,6 @@ public class ErrorHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
     public static ResponseEntity<List<ErrorEntitySide>> errorEntitySide(ConstraintViolationException e) {
-        /*
-        Iterator listaErros = e.getConstraintViolations().stream().iterator();
-        for (Iterator it = listaErros; it.hasNext(); ) {
-            new ErrorEntitySide(it);
-        }
-        */
-        //String erros = e.getMessage();
-        //e.getConstraintViolations().iterator()
-        //      e.getConstraintViolations().stream().map()
-        //manipular Set para string
-        //error ServerSide
         return ResponseEntity.badRequest().body(
                 e.getConstraintViolations().stream().map(erro -> new ErrorEntitySide(erro)).collect(Collectors.toList()));
     }
@@ -52,6 +41,7 @@ public class ErrorHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public static ResponseEntity errorEnum(HttpMessageNotReadableException e) {
+        //manipular string
         return ResponseEntity.status(400).body(e.getMessage());
     }
 

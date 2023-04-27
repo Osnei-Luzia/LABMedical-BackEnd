@@ -20,8 +20,7 @@ public class EnumValidator implements ConstraintValidator<EnumConstraint, Enum> 
     public void initialize(EnumConstraint targetEnum) {
         valoresValidos = Stream.of(targetEnum.targetClassType().getEnumConstants()).map(Enum::name).collect(Collectors.toSet());
         //keysValidas = Stream.of(targetEnum.targetClassType().getEnumConstants()).map(Enum::ordinal).collect(Collectors.toSet());
-        campoVerificado = targetEnum.targetClassType().getName();
-        //manipular String
+        campoVerificado = targetEnum.targetClassType().getSimpleName();
     }
 
     @Override

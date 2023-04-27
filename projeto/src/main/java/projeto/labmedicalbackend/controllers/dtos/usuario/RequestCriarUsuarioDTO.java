@@ -29,13 +29,6 @@ public class RequestCriarUsuarioDTO {
     @NotNull
     @EnumConstraint(targetClassType = EstadoCivil.class, message = "estado civil inválido")
     private EstadoCivil estadoCivil;
-    /*
-     * 0- Solteiro
-     * 1- Casado
-     * 2- Separado
-     * 3- Divorciado
-     * 4- Viúvo
-     */
     @NotBlank
     private String telefone;
     @Email(message = "deve ser um endereço de e-mail válido. exemplo@exemplo")
@@ -50,16 +43,6 @@ public class RequestCriarUsuarioDTO {
     @NotNull
     @EnumConstraint(targetClassType = Especializacao.class, message = "especialização inválida")
     private Especializacao especializacao;
-    /*
-    * 0- Clínico Geral
-    * 1- Anestesista
-    * 2- Dermatologia
-    * 3- Ginecologia
-    * 4- Neurologia
-    * 5- Pediatria
-    * 6- Psiquiatria
-    * 7- Ortopedia
-    */
     @Size(min = 8, message = "tamanho deve ser de no mínimo 8 caractéres")
     @NotBlank
     @Pattern(regexp = "^[A-Za-z0-9]*$",message = "apenas caractéres alfanuméricos")
