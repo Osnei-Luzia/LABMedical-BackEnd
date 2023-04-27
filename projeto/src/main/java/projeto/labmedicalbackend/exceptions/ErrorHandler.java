@@ -49,4 +49,8 @@ public class ErrorHandler {
     public static ResponseEntity errorEnum(EnumNullPointerException e) {
         return ResponseEntity.status(400).body(e.getMessage());
     }
+    @ExceptionHandler(RegistroFilhoException.class)
+    public static ResponseEntity errorDelete(RegistroFilhoException e){
+        return ResponseEntity.status(500).body(e.getMessage());
+    }
 }

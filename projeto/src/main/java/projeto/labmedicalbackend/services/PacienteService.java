@@ -7,6 +7,7 @@ import projeto.labmedicalbackend.controllers.dtos.paciente.RequestCriarPacienteD
 import projeto.labmedicalbackend.controllers.dtos.paciente.ResponseBuscarPacienteDTO;
 import projeto.labmedicalbackend.exceptions.CpfExistsException;
 import projeto.labmedicalbackend.exceptions.DataExistsException;
+import projeto.labmedicalbackend.exceptions.RegistroFilhoException;
 import projeto.labmedicalbackend.repositories.ExameRepository;
 import projeto.labmedicalbackend.services.mappers.PacienteMapper;
 import projeto.labmedicalbackend.models.Paciente;
@@ -48,13 +49,13 @@ public class PacienteService {
 
     public Paciente alterarPaciente(RequestAtualizarPacienteDTO request, Long idPaciente) {
         Paciente paciente = repository.findById(idPaciente).orElseThrow(() -> new DataExistsException("Paciente não encontrado"));
-        if (!Objects.isNull(request.getEndereco())&&!enderecoService.existsEnderecoById(request.getEndereco().getId())) {
+        if (!Objects.isNull(request.getEndereco()) && !enderecoService.existsEnderecoById(request.getEndereco().getId())) {
             throw new DataExistsException("Endereço não cadastrado");
         }
-        if(Objects.isNull(request.getEndereco())){
+        if (Objects.isNull(request.getEndereco())) {
             request.setEndereco(paciente.getEndereco());
         }
-        if(Objects.isNull(request.getEstadoCivil())){
+        if (Objects.isNull(request.getEstadoCivil())) {
             request.setEstadoCivil(paciente.getEstadoCivil());
         }
         mapper.update(paciente, request);
@@ -76,7 +77,7 @@ public class PacienteService {
         if (lista.size() < 1) {
             throw new DataExistsException("Não há pacientes cadastrados");
         }
-        for(ResponseBuscarPacienteDTO paciente:lista){
+        for (ResponseBuscarPacienteDTO paciente : lista) {
             paciente.setExames(exameRepository.findAllByPaciente_id(paciente.getId()));
         }
         return lista;
@@ -90,7 +91,11 @@ public class PacienteService {
 
     public void deletarPaciente(Long id) {
         Paciente paciente = repository.findById(id).orElseThrow(() -> new DataExistsException("Paciente não encontrado"));
-        repository.delete(paciente);
+        try {
+            repository.delete(paciente);
+        } catch (RuntimeException e){
+            throw new RegistroFilhoException("Paciente possui exames e ou consultas cadastradas");
+        }
     }
 
     public boolean existsPacienteById(Long id) {
