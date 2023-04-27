@@ -1,11 +1,13 @@
 package projeto.labmedicalbackend.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projeto.labmedicalbackend.controllers.dtos.paciente.RequestAtualizarPacienteDTO;
 import projeto.labmedicalbackend.controllers.dtos.paciente.RequestCriarPacienteDTO;
 import projeto.labmedicalbackend.controllers.dtos.paciente.ResponseBuscarPacienteDTO;
 import projeto.labmedicalbackend.exceptions.CpfExistsException;
 import projeto.labmedicalbackend.exceptions.DataExistsException;
+import projeto.labmedicalbackend.repositories.ExameRepository;
 import projeto.labmedicalbackend.services.mappers.PacienteMapper;
 import projeto.labmedicalbackend.models.Paciente;
 import projeto.labmedicalbackend.repositories.PacienteRepository;
@@ -20,13 +22,16 @@ public class PacienteService {
     private final PacienteMapper mapper;
     private final EnderecoService enderecoService;
 
-    public PacienteService(PacienteRepository repository, PacienteMapper mapper, EnderecoService enderecoService) {
+    private final ExameRepository exameRepository;
+
+    public PacienteService(PacienteRepository repository, PacienteMapper mapper, EnderecoService enderecoService, ExameRepository exameRepository) {
         this.repository = repository;
         this.mapper = mapper;
         this.enderecoService = enderecoService;
+        this.exameRepository = exameRepository;
     }
 
-    public Paciente salvarPaciente(RequestCriarPacienteDTO request) {
+    public ResponseBuscarPacienteDTO salvarPaciente(RequestCriarPacienteDTO request) {
         if (Objects.isNull(request.getEndereco().getId()) || !enderecoService.existsEnderecoById(request.getEndereco().getId())) {
             throw new DataExistsException("Endereço não cadastrado");
         }
@@ -34,7 +39,8 @@ public class PacienteService {
             Paciente paciente = mapper.map(request);
             paciente = repository.save(paciente);
             paciente.setEndereco(enderecoService.procurarEnderecoById(paciente.getEndereco().getId()));
-            return paciente;
+            ResponseBuscarPacienteDTO retorno = mapper.map(paciente);
+            return retorno;
         } else {
             throw new CpfExistsException("CPF em uso por outro paciente");
         }
@@ -57,8 +63,10 @@ public class PacienteService {
         return paciente;
     }
 
-    public ResponseBuscarPacienteDTO procurarPacientes(String nome) {
-        return mapper.map(repository.findByNomeCompleto(nome).orElseThrow(() -> new DataExistsException("Paciente não encontrado")));
+    public ResponseBuscarPacienteDTO procurarPacientesByNome(String nome) {
+        ResponseBuscarPacienteDTO paciente = mapper.map(repository.findByNomeCompleto(nome).orElseThrow(() -> new DataExistsException("Paciente não encontrado")));
+        paciente.setExames(exameRepository.findAllByPaciente_id(paciente.getId()));
+        return paciente;
     }
 
     public List<ResponseBuscarPacienteDTO> procurarPacientes() {
@@ -68,11 +76,16 @@ public class PacienteService {
         if (lista.size() < 1) {
             throw new DataExistsException("Não há pacientes cadastrados");
         }
+        for(ResponseBuscarPacienteDTO paciente:lista){
+            paciente.setExames(exameRepository.findAllByPaciente_id(paciente.getId()));
+        }
         return lista;
     }
 
     public ResponseBuscarPacienteDTO procurarPacienteById(Long id) {
-        return mapper.map(repository.findById(id).orElseThrow(() -> new DataExistsException("Paciente não encontrado")));
+        ResponseBuscarPacienteDTO paciente = mapper.map(repository.findById(id).orElseThrow(() -> new DataExistsException("Paciente não encontrado")));
+        paciente.setExames(exameRepository.findAllByPaciente_id(paciente.getId()));
+        return paciente;
     }
 
     public void deletarPaciente(Long id) {

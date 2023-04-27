@@ -29,5 +29,6 @@ public class ResponseBuscarPacienteDTO {
     private String numeroCarteira;
     private String validade;
     private Endereco endereco;
+    private List<Long> exames;
 }
 

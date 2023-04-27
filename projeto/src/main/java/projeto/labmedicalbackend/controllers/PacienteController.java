@@ -21,8 +21,8 @@ public class PacienteController {
         this.service = service;
     }
     @GetMapping(params = "nome")
-    public ResponseEntity<ResponseBuscarPacienteDTO> buscarPacientes(@RequestParam String nome){
-        return ResponseEntity.ok().body(service.procurarPacientes(nome));
+    public ResponseEntity<ResponseBuscarPacienteDTO> buscarPacientesByNome(@RequestParam String nome){
+        return ResponseEntity.ok().body(service.procurarPacientesByNome(nome));
     }
     @GetMapping
     public ResponseEntity<List<ResponseBuscarPacienteDTO>> buscarPacientes(){
@@ -35,7 +35,7 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Paciente> criarPaciente(@RequestBody @Validated RequestCriarPacienteDTO request) {
+    public ResponseEntity<ResponseBuscarPacienteDTO> criarPaciente(@RequestBody @Validated RequestCriarPacienteDTO request) {
         return ResponseEntity.ok().body(service.salvarPaciente(request));//fazer created
     }
 
