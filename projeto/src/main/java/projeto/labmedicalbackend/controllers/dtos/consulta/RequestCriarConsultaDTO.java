@@ -12,8 +12,6 @@ public class RequestCriarConsultaDTO {
     @NotBlank
     private String motivo;
     private Date dataHora;
-    //fazer pelo timestamp da inserção
-    //validar data
     @NotNull
     private String descricao;
     @NotNull

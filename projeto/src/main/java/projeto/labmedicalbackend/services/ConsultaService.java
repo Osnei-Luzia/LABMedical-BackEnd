@@ -28,18 +28,10 @@ public class ConsultaService {
     }
 
     public ResponseBuscarConsultaDTO salvarConsulta(RequestCriarConsultaDTO request) {
-        if (!Objects.isNull(request.getPaciente_id().getId())) {
-            if (!pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
-                throw new DataExistsException("Paciente não cadastrado");
-            }
-        } else {
+        if (Objects.isNull(request.getPaciente_id().getId()) || !pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
             throw new DataExistsException("Paciente não cadastrado");
         }
-        if (!Objects.isNull(request.getUsuario_id().getId())) {
-            if (!usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
-                throw new DataExistsException("Usuário não cadastrado");
-            }
-        } else {
+        if (Objects.isNull(request.getUsuario_id().getId()) || !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
             throw new DataExistsException("Usuário não cadastrado");
         }
         request.setDataHora(new Date());//configurar timestamp?
@@ -49,18 +41,13 @@ public class ConsultaService {
 
     public ResponseBuscarConsultaDTO alterarConsulta(RequestAtualizarConsultaDTO request, Long idConsulta) {
         Consulta consulta = repository.findById(idConsulta).orElseThrow(() -> new DataExistsException("Consulta não encontrada"));
-        //checar id dentro de paciente e usuario
-        if (!Objects.isNull(request.getPaciente_id())) {
-            if (!pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
-                throw new DataExistsException("Paciente não cadastrado");
-            }
+        if (!Objects.isNull(request.getPaciente_id()) && !pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
+            throw new DataExistsException("Paciente não cadastrado");
         } else {
             request.setPaciente_id(consulta.getPaciente_id());
         }
-        if (!Objects.isNull(request.getUsuario_id())) {
-            if (!usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
-                throw new DataExistsException("Usuário não cadastrado");
-            }
+        if (!Objects.isNull(request.getUsuario_id()) && !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
+            throw new DataExistsException("Usuário não cadastrado");
         } else {
             request.setUsuario_id(consulta.getUsuario_id());
         }
@@ -78,7 +65,7 @@ public class ConsultaService {
         repository.delete(consulta);
     }
 
-    public Long contarConsultas(){
+    public Long contarConsultas() {
         return repository.count();
     }
 }

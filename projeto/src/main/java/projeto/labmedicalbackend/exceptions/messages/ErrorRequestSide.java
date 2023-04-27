@@ -1,4 +1,4 @@
-package projeto.labmedicalbackend.controllers.dtos;
+package projeto.labmedicalbackend.exceptions.messages;
 
 import lombok.Data;
 import org.springframework.validation.FieldError;

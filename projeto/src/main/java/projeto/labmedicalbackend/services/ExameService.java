@@ -27,19 +27,11 @@ public class ExameService {
         this.usuarioService = usuarioService;
     }
 
-    public ResponseBuscarExameDTO salvarExame(RequestCriarExameDTO request){
-        if (!Objects.isNull(request.getPaciente_id().getId())) {
-            if (!pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
-                throw new DataExistsException("Paciente não cadastrado");
-            }
-        } else {
+    public ResponseBuscarExameDTO salvarExame(RequestCriarExameDTO request) {
+        if (Objects.isNull(request.getPaciente_id().getId()) || !pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
             throw new DataExistsException("Paciente não cadastrado");
         }
-        if (!Objects.isNull(request.getUsuario_id().getId())) {
-            if (!usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
-                throw new DataExistsException("Usuário não cadastrado");
-            }
-        } else {
+        if (Objects.isNull(request.getUsuario_id().getId()) || !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
             throw new DataExistsException("Usuário não cadastrado");
         }
         request.setDataHora(new Date());//configurar timestamp?
@@ -47,20 +39,15 @@ public class ExameService {
         return response;
     }
 
-    public ResponseBuscarExameDTO alterarExame(RequestAtualizarExameDTO request, Long id){
+    public ResponseBuscarExameDTO alterarExame(RequestAtualizarExameDTO request, Long id) {
         Exame exame = repository.findById(id).orElseThrow(() -> new DataExistsException("Exame não encontrado"));
-        //checar id dentro de paciente e usuario
-        if (!Objects.isNull(request.getPaciente_id())) {
-            if (!pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
-                throw new DataExistsException("Paciente não cadastrado");
-            }
+        if (!Objects.isNull(request.getPaciente_id()) && !pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
+            throw new DataExistsException("Paciente não cadastrado");
         } else {
             request.setPaciente_id(exame.getPaciente_id());
         }
-        if (!Objects.isNull(request.getUsuario_id())) {
-            if (!usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
-                throw new DataExistsException("Usuário não cadastrado");
-            }
+        if (!Objects.isNull(request.getUsuario_id()) && !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
+            throw new DataExistsException("Usuário não cadastrado");
         } else {
             request.setUsuario_id(exame.getUsuario_id());
         }
@@ -69,16 +56,16 @@ public class ExameService {
         return response;
     }
 
-    public ResponseBuscarExameDTO procurarExameById(Long id){
+    public ResponseBuscarExameDTO procurarExameById(Long id) {
         return mapper.map(repository.findById(id).orElseThrow(() -> new DataExistsException("Exame não encontrado")));
     }
 
-    public void deletarExame(Long id){
+    public void deletarExame(Long id) {
         Exame exame = repository.findById(id).orElseThrow(() -> new DataExistsException("Exame não encontrado"));
         repository.delete(exame);
     }
 
-    public Long contarExames(){
+    public Long contarExames() {
         return repository.count();
     }
 }
