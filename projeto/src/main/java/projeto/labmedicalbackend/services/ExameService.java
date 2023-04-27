@@ -42,13 +42,15 @@ public class ExameService {
     public ResponseBuscarExameDTO alterarExame(RequestAtualizarExameDTO request, Long id) {
         Exame exame = repository.findById(id).orElseThrow(() -> new DataExistsException("Exame não encontrado"));
         if (!Objects.isNull(request.getPaciente_id()) && !pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
-            throw new DataExistsException("Paciente não cadastrado");
-        } else {
+            throw new DataExistsException("Paciente não encontrado");
+        }
+        if(Objects.isNull(request.getPaciente_id())){
             request.setPaciente_id(exame.getPaciente_id());
         }
         if (!Objects.isNull(request.getUsuario_id()) && !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
-            throw new DataExistsException("Usuário não cadastrado");
-        } else {
+            throw new DataExistsException("Usuário não encontrado");
+        }
+        if (Objects.isNull(request.getUsuario_id())){
             request.setUsuario_id(exame.getUsuario_id());
         }
         mapper.update(exame, request);

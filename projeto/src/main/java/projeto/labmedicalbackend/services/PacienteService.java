@@ -45,6 +45,9 @@ public class PacienteService {
         if (!Objects.isNull(request.getEndereco())&&!enderecoService.existsEnderecoById(request.getEndereco().getId())) {
             throw new DataExistsException("Endereço não cadastrado");
         }
+        if(Objects.isNull(request.getEndereco())){
+            request.setEndereco(paciente.getEndereco());
+        }
         mapper.update(paciente, request);
         paciente = repository.save(paciente);
         paciente.setEndereco(enderecoService.procurarEnderecoById(paciente.getEndereco().getId()));

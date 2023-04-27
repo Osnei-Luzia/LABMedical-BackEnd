@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 public class ResponseBuscarPacienteDTO {
     //pessoa
+    private Long id;
     private String nomeCompleto;
     private String genero;
     private String dataNascimento;

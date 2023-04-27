@@ -16,7 +16,6 @@ import java.util.Objects;
 public class ConsultaService {
     private final ConsultaRepository repository;
     private final ConsultaMapper mapper;
-
     private final PacienteService pacienteService;
     private final UsuarioService usuarioService;
 
@@ -42,13 +41,15 @@ public class ConsultaService {
     public ResponseBuscarConsultaDTO alterarConsulta(RequestAtualizarConsultaDTO request, Long idConsulta) {
         Consulta consulta = repository.findById(idConsulta).orElseThrow(() -> new DataExistsException("Consulta não encontrada"));
         if (!Objects.isNull(request.getPaciente_id()) && !pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
-            throw new DataExistsException("Paciente não cadastrado");
-        } else {
+            throw new DataExistsException("Paciente não encontrado");
+        }
+        if(Objects.isNull(request.getPaciente_id())){
             request.setPaciente_id(consulta.getPaciente_id());
         }
         if (!Objects.isNull(request.getUsuario_id()) && !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
-            throw new DataExistsException("Usuário não cadastrado");
-        } else {
+            throw new DataExistsException("Usuário não encontrado");
+        }
+        if (Objects.isNull(request.getUsuario_id())){
             request.setUsuario_id(consulta.getUsuario_id());
         }
         mapper.update(consulta, request);
