@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import projeto.labmedicalbackend.models.enums.EstadoCivil;
+import projeto.labmedicalbackend.validators.EnumConstraint;
 
 
 @Entity
@@ -39,7 +40,15 @@ public class Pessoa {
     @Column(nullable = false)
     @NotNull
     @Enumerated(EnumType.ORDINAL)
+    @EnumConstraint(targetClassType = EstadoCivil.class, message = "estado civil inválido")
     private EstadoCivil estadoCivil;
+    /*
+     * 0- Solteiro
+     * 1- Casado
+     * 2- Separado
+     * 3- Divorciado
+     * 4- Viúvo
+     */
     @Column(length = 32, nullable = false)
     @NotBlank
     private String telefone;

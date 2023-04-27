@@ -10,7 +10,7 @@
     </parent>
     <groupId>projeto</groupId>
     <artifactId>LabMedical-BackEnd</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.9.0-TEST</version>
     <name>LabMedical-BackEnd</name>
     <description>LabMedical-BackEnd</description>
     <properties>

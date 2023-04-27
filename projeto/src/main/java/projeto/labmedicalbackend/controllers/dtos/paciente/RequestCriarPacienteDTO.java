@@ -55,5 +55,6 @@ public class RequestCriarPacienteDTO {
     @Pattern(regexp = "^[0-9]{1,2}\\/[0-9]{1,2}\\/[0-9]{4}$", message = "use o formato dd/MM/aaaa")
     @DateConstraint
     private String validade;
+    @NotNull
     private Endereco endereco;
 }
