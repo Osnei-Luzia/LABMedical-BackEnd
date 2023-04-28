@@ -24,8 +24,8 @@ public class EnumValidator implements ConstraintValidator<EnumConstraint, Enum> 
             if (valoresValidos.contains(field.name())) {
                 return true;
             }
-        } catch (NullPointerException e){
-            throw new EnumNullPointerException(campoVerificado+" não deve ser nulo");
+        } catch (NullPointerException e) {
+            throw new EnumNullPointerException(campoVerificado + " não deve ser nulo");
         }
         return false;
     }

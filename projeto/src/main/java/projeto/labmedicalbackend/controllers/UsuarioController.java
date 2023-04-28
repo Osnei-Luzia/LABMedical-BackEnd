@@ -16,6 +16,7 @@ import projeto.labmedicalbackend.services.UsuarioService;
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
     private final UsuarioService service;
+
     public UsuarioController(UsuarioService service) {
         this.service = service;
     }

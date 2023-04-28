@@ -6,7 +6,7 @@ import projeto.labmedicalbackend.controllers.dtos.paciente.RequestCriarPacienteD
 import projeto.labmedicalbackend.controllers.dtos.paciente.ResponseBuscarPacienteDTO;
 import projeto.labmedicalbackend.models.Paciente;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING , unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface PacienteMapper {
     Paciente map(RequestCriarPacienteDTO source);
 

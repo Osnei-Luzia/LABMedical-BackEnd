@@ -20,17 +20,19 @@ public class PacienteController {
     public PacienteController(PacienteService service) {
         this.service = service;
     }
+
     @GetMapping(params = "nome")
-    public ResponseEntity<ResponseBuscarPacienteDTO> buscarPacientesByNome(@RequestParam String nome){
+    public ResponseEntity<ResponseBuscarPacienteDTO> buscarPacientesByNome(@RequestParam String nome) {
         return ResponseEntity.ok().body(service.procurarPacientesByNome(nome));
     }
+
     @GetMapping
-    public ResponseEntity<List<ResponseBuscarPacienteDTO>> buscarPacientes(){
+    public ResponseEntity<List<ResponseBuscarPacienteDTO>> buscarPacientes() {
         return ResponseEntity.ok().body(service.procurarPacientes());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseBuscarPacienteDTO> buscarPacienteById(@PathVariable Long id){
+    public ResponseEntity<ResponseBuscarPacienteDTO> buscarPacienteById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.procurarPacienteById(id));
     }
 
@@ -45,7 +47,7 @@ public class PacienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity removerPaciente(@PathVariable Long id){
+    public ResponseEntity removerPaciente(@PathVariable Long id) {
         service.deletarPaciente(id);
         return ResponseEntity.noContent().build();
     }

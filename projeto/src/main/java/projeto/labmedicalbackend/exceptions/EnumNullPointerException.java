@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EnumNullPointerException extends NullPointerException{
+public class EnumNullPointerException extends NullPointerException {
     private String message;
 }

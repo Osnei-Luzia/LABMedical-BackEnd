@@ -42,19 +42,21 @@ public class ErrorHandler {
     public static ResponseEntity errorEnum(HttpMessageNotReadableException e) {
         String texto = e.getMessage();
         int start = texto.indexOf("models.enums.");
-        int end = texto.indexOf("`",start);
-        String erro = texto.substring(start+13,end)+" fora das opções válidas: ";
+        int end = texto.indexOf("`", start);
+        String erro = texto.substring(start + 13, end) + " fora das opções válidas: ";
         start = texto.indexOf("[");
         end = texto.indexOf("]");
-        erro = erro + texto.substring(start,end+1);
+        erro = erro + texto.substring(start, end + 1);
         return ResponseEntity.status(400).body(erro);
     }
+
     @ExceptionHandler(EnumNullPointerException.class)
     public static ResponseEntity errorEnum(EnumNullPointerException e) {
         return ResponseEntity.status(400).body(e.getMessage());
     }
+
     @ExceptionHandler(RegistroFilhoException.class)
-    public static ResponseEntity errorDelete(RegistroFilhoException e){
+    public static ResponseEntity errorDelete(RegistroFilhoException e) {
         return ResponseEntity.status(500).body(e.getMessage());
     }
 }

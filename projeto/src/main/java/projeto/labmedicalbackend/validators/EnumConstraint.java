@@ -11,7 +11,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EnumConstraint {
     String message() default "enum fora dos limites";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
+
     Class<? extends Enum<?>> targetClassType();
 }

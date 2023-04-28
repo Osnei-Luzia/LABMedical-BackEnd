@@ -14,12 +14,12 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Paciente extends Pessoa{
+public class Paciente extends Pessoa {
     @ElementCollection
     private List<String> listaAlergias;
     @ElementCollection
     private List<String> listaCuidados;
-    @Column(length = 64,nullable = false)
+    @Column(length = 64, nullable = false)
     @NotBlank
     private String contatoEmergencia;
     private String convenio;

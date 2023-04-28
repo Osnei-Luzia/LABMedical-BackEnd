@@ -10,8 +10,9 @@ import java.util.Optional;
 
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query("SELECT u FROM Usuario u WHERE u.cpf = :cpf")
-    Optional<Usuario> findUsuarioByCpf (@Param("cpf")String cpf);
-    boolean existsUsuarioByCpf(@Param("cpf")String cpf);
+    Optional<Usuario> findUsuarioByCpf(@Param("cpf") String cpf);
+
+    boolean existsUsuarioByCpf(@Param("cpf") String cpf);
 }

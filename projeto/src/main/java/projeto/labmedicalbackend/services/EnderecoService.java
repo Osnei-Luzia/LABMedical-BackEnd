@@ -27,19 +27,19 @@ public class EnderecoService {
 
     public List<ResponseBuscarEnderecoDTO> procurarEnderecos() {
         List<ResponseBuscarEnderecoDTO> lista = repository.findAll().stream().map(
-                                                endereco -> mapper.map(endereco))
-                                                .collect(Collectors.toList());
-        if(lista.size()<1){
+                        endereco -> mapper.map(endereco))
+                .collect(Collectors.toList());
+        if (lista.size() < 1) {
             throw new DataExistsException("Não há endereços cadastrados");
         }
-        return  lista;
+        return lista;
     }
 
-    public Endereco procurarEnderecoById(Long id){
-        return repository.findById(id).orElseThrow(()->new DataExistsException("Endereço não cadastrado"));
+    public Endereco procurarEnderecoById(Long id) {
+        return repository.findById(id).orElseThrow(() -> new DataExistsException("Endereço não cadastrado"));
     }
 
-    public boolean existsEnderecoById(Long id){
+    public boolean existsEnderecoById(Long id) {
         return repository.existsEnderecoById(id);
     }
 }

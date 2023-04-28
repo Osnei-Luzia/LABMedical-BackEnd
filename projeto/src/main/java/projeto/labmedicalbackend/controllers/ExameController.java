@@ -18,7 +18,7 @@ public class ExameController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseBuscarExameDTO> buscarExameById(@PathVariable Long id){
+    public ResponseEntity<ResponseBuscarExameDTO> buscarExameById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.procurarExameById(id));
     }
 
@@ -28,12 +28,12 @@ public class ExameController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseBuscarExameDTO> atualizarExame(@RequestBody @Validated RequestAtualizarExameDTO request, @PathVariable Long id){
-        return ResponseEntity.ok().body(service.alterarExame(request,id));
+    public ResponseEntity<ResponseBuscarExameDTO> atualizarExame(@RequestBody @Validated RequestAtualizarExameDTO request, @PathVariable Long id) {
+        return ResponseEntity.ok().body(service.alterarExame(request, id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity removerExame(@PathVariable Long id){
+    public ResponseEntity removerExame(@PathVariable Long id) {
         service.deletarExame(id);
         return ResponseEntity.noContent().build();
     }

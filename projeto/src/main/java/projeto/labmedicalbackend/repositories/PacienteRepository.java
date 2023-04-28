@@ -8,8 +8,8 @@ import projeto.labmedicalbackend.models.Paciente;
 import java.util.Optional;
 
 @Repository
-public interface PacienteRepository extends JpaRepository<Paciente,Long> {
-    boolean existsPacienteByCpf(@Param("cpf")String cpf);
+public interface PacienteRepository extends JpaRepository<Paciente, Long> {
+    boolean existsPacienteByCpf(@Param("cpf") String cpf);
 
-    Optional<Paciente> findByNomeCompleto(@Param("nome")String nome);
+    Optional<Paciente> findByNomeCompleto(@Param("nome") String nome);
 }

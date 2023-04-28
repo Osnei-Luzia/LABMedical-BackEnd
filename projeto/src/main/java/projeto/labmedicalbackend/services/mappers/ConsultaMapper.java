@@ -8,12 +8,14 @@ import projeto.labmedicalbackend.models.Consulta;
 import projeto.labmedicalbackend.models.Paciente;
 import projeto.labmedicalbackend.models.Usuario;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING ,
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-        uses = { Paciente.class, Usuario.class })
+        uses = {Paciente.class, Usuario.class})
 public interface ConsultaMapper {
     Consulta map(RequestCriarConsultaDTO source);
+
     ResponseBuscarConsultaDTO map(Consulta source);
+
     void update(@MappingTarget Consulta target, RequestAtualizarConsultaDTO source);
 }

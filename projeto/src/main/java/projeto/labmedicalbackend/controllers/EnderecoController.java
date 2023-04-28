@@ -20,12 +20,12 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ResponseBuscarEnderecoDTO>> buscarEnderecos(){
+    public ResponseEntity<List<ResponseBuscarEnderecoDTO>> buscarEnderecos() {
         return ResponseEntity.ok().body(service.procurarEnderecos());
     }
 
     @GetMapping("/{id}")
-    public Endereco buscarEnderecoById(@PathVariable Long id){
+    public Endereco buscarEnderecoById(@PathVariable Long id) {
         return service.procurarEnderecoById(id);
     }
 

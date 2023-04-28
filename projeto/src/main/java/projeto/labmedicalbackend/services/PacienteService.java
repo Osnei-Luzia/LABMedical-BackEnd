@@ -91,7 +91,7 @@ public class PacienteService {
         Paciente paciente = repository.findById(id).orElseThrow(() -> new DataExistsException("Paciente não encontrado"));
         try {
             repository.delete(paciente);
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new RegistroFilhoException("Paciente possui exames e ou consultas cadastradas");
         }
     }
