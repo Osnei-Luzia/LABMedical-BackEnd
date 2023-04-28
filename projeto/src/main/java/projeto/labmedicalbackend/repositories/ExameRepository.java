@@ -5,10 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import projeto.labmedicalbackend.models.Exame;
-import projeto.labmedicalbackend.models.Usuario;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ExameRepository extends JpaRepository<Exame, Long> {

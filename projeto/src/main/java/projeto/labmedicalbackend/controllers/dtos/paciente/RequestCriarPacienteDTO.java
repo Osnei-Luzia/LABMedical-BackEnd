@@ -30,13 +30,6 @@ public class RequestCriarPacienteDTO {
     @NotNull
     @EnumConstraint(targetClassType = EstadoCivil.class, message = "estado civil inválido")
     private EstadoCivil estadoCivil;
-    /*
-     * 0- Solteiro
-     * 1- Casado
-     * 2- Separado
-     * 3- Divorciado
-     * 4- Viúvo
-     */
     @NotBlank
     private String telefone;
     @Email(message = "deve ser um endereço de e-mail válido. exemplo@exemplo")

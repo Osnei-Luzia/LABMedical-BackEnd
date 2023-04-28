@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import projeto.labmedicalbackend.exceptions.messages.ErrorEntitySide;
 import projeto.labmedicalbackend.exceptions.messages.ErrorRequestSide;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice

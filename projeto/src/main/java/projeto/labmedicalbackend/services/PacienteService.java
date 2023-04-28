@@ -1,6 +1,5 @@
 package projeto.labmedicalbackend.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projeto.labmedicalbackend.controllers.dtos.paciente.RequestAtualizarPacienteDTO;
 import projeto.labmedicalbackend.controllers.dtos.paciente.RequestCriarPacienteDTO;

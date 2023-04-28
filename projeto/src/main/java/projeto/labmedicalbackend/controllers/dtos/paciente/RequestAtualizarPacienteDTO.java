@@ -1,17 +1,12 @@
 package projeto.labmedicalbackend.controllers.dtos.paciente;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.br.CPF;
 import projeto.labmedicalbackend.models.Endereco;
 import projeto.labmedicalbackend.models.enums.EstadoCivil;
 import projeto.labmedicalbackend.validators.DateConstraint;
-import projeto.labmedicalbackend.validators.EnumConstraint;
 
-import java.util.Date;
 import java.util.List;
 
 @Data

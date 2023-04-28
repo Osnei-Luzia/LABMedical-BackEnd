@@ -4,7 +4,6 @@ import lombok.Data;
 import projeto.labmedicalbackend.models.Endereco;
 import projeto.labmedicalbackend.models.enums.EstadoCivil;
 
-import java.util.Date;
 import java.util.List;
 
 @Data

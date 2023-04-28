@@ -1,7 +1,5 @@
 package projeto.labmedicalbackend.controllers.dtos.exame;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import projeto.labmedicalbackend.models.Paciente;
 import projeto.labmedicalbackend.models.Usuario;
