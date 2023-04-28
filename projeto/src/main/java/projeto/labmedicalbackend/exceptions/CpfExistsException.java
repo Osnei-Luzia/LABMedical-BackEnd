@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CpfExistsException extends IllegalArgumentException{
+public class CpfExistsException extends IllegalArgumentException {
     private String message;
 }

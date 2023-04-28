@@ -16,7 +16,6 @@ import java.util.Objects;
 public class ExameService {
     private final ExameRepository repository;
     private final ExameMapper mapper;
-
     private final PacienteService pacienteService;
     private final UsuarioService usuarioService;
 
@@ -34,7 +33,7 @@ public class ExameService {
         if (Objects.isNull(request.getUsuario_id().getId()) || !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
             throw new DataExistsException("Usuário não cadastrado");
         }
-        request.setDataHora(new Date());//configurar timestamp?
+        request.setDataHora(new Date());
         ResponseBuscarExameDTO response = mapper.map(repository.save(mapper.map(request)));
         return response;
     }
@@ -44,13 +43,13 @@ public class ExameService {
         if (!Objects.isNull(request.getPaciente_id()) && !pacienteService.existsPacienteById(request.getPaciente_id().getId())) {
             throw new DataExistsException("Paciente não encontrado");
         }
-        if(Objects.isNull(request.getPaciente_id())){
+        if (Objects.isNull(request.getPaciente_id())) {
             request.setPaciente_id(exame.getPaciente_id());
         }
         if (!Objects.isNull(request.getUsuario_id()) && !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
             throw new DataExistsException("Usuário não encontrado");
         }
-        if (Objects.isNull(request.getUsuario_id())){
+        if (Objects.isNull(request.getUsuario_id())) {
             request.setUsuario_id(exame.getUsuario_id());
         }
         mapper.update(exame, request);

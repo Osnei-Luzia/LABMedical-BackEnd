@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import projeto.labmedicalbackend.models.enums.Especializacao;
-import projeto.labmedicalbackend.models.enums.EstadoCivil;
 import projeto.labmedicalbackend.validators.EnumConstraint;
 
 @Entity

@@ -6,7 +6,6 @@ import org.hibernate.validator.constraints.Email;
 import projeto.labmedicalbackend.models.enums.Especializacao;
 import projeto.labmedicalbackend.models.enums.EstadoCivil;
 import projeto.labmedicalbackend.validators.DateConstraint;
-import projeto.labmedicalbackend.validators.EnumConstraint;
 
 @Data
 public class RequestAtualizarUsuarioDTO {

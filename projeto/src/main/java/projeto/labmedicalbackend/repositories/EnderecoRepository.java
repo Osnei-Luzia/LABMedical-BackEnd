@@ -7,5 +7,5 @@ import projeto.labmedicalbackend.models.Endereco;
 
 @Repository
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
-    boolean existsEnderecoById(@Param("id")Long id);
+    boolean existsEnderecoById(@Param("id") Long id);
 }

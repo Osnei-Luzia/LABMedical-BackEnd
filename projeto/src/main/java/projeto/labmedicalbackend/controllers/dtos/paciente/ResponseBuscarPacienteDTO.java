@@ -4,7 +4,6 @@ import lombok.Data;
 import projeto.labmedicalbackend.models.Endereco;
 import projeto.labmedicalbackend.models.enums.EstadoCivil;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -29,5 +28,6 @@ public class ResponseBuscarPacienteDTO {
     private String numeroCarteira;
     private String validade;
     private Endereco endereco;
+    private List<Long> exames;
 }
 

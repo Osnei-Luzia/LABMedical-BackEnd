@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DataExistsException extends IllegalArgumentException {
+public class RegistroFilhoException extends RuntimeException {
     private String message;
 }

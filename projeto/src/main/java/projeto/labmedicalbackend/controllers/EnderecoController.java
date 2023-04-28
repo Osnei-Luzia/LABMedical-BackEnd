@@ -3,7 +3,6 @@ package projeto.labmedicalbackend.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 import projeto.labmedicalbackend.controllers.dtos.endereco.RequestCriarEnderecoDTO;
 import projeto.labmedicalbackend.controllers.dtos.endereco.ResponseBuscarEnderecoDTO;
 import projeto.labmedicalbackend.models.Endereco;
@@ -21,18 +20,17 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ResponseBuscarEnderecoDTO>> buscarEnderecos(){
+    public ResponseEntity<List<ResponseBuscarEnderecoDTO>> buscarEnderecos() {
         return ResponseEntity.ok().body(service.procurarEnderecos());
     }
 
     @GetMapping("/{id}")
-    public Endereco buscarEnderecoById(@PathVariable Long id){
+    public Endereco buscarEnderecoById(@PathVariable Long id) {
         return service.procurarEnderecoById(id);
     }
 
     @PostMapping
     public ResponseEntity<Endereco> cadastrarEndereco(@RequestBody @Validated RequestCriarEnderecoDTO request) {
-        return ResponseEntity.ok().body(service.salvarEndereco(request));//fazer created
-        //return ResponseEntity.created("{id}")
+        return ResponseEntity.status(201).body(service.salvarEndereco(request));
     }
 }

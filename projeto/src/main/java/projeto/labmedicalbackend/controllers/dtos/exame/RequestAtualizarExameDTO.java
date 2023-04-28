@@ -4,8 +4,6 @@ import lombok.Data;
 import projeto.labmedicalbackend.models.Paciente;
 import projeto.labmedicalbackend.models.Usuario;
 
-import java.util.Date;
-
 @Data
 public class RequestAtualizarExameDTO {
     private String nome;

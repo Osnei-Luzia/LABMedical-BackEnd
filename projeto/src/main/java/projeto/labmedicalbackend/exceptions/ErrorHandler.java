@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import projeto.labmedicalbackend.exceptions.messages.ErrorEntitySide;
 import projeto.labmedicalbackend.exceptions.messages.ErrorRequestSide;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,12 +40,23 @@ public class ErrorHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public static ResponseEntity errorEnum(HttpMessageNotReadableException e) {
-        //manipular string
-        return ResponseEntity.status(400).body(e.getMessage());
+        String texto = e.getMessage();
+        int start = texto.indexOf("models.enums.");
+        int end = texto.indexOf("`", start);
+        String erro = texto.substring(start + 13, end) + " fora das opções válidas: ";
+        start = texto.indexOf("[");
+        end = texto.indexOf("]");
+        erro = erro + texto.substring(start, end + 1);
+        return ResponseEntity.status(400).body(erro);
     }
 
     @ExceptionHandler(EnumNullPointerException.class)
     public static ResponseEntity errorEnum(EnumNullPointerException e) {
         return ResponseEntity.status(400).body(e.getMessage());
+    }
+
+    @ExceptionHandler(RegistroFilhoException.class)
+    public static ResponseEntity errorDelete(RegistroFilhoException e) {
+        return ResponseEntity.status(500).body(e.getMessage());
     }
 }

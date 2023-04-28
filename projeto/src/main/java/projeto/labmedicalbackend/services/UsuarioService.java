@@ -31,10 +31,10 @@ public class UsuarioService {
 
     public Usuario alterarUsuario(RequestAtualizarUsuarioDTO request, Long id) {
         Usuario usuario = repository.findById(id).orElseThrow(() -> new DataExistsException("Usuario não encontrado"));
-        if(Objects.isNull(request.getEstadoCivil())){
+        if (Objects.isNull(request.getEstadoCivil())) {
             request.setEstadoCivil(usuario.getEstadoCivil());
         }
-        if(Objects.isNull(request.getEspecializacao())){
+        if (Objects.isNull(request.getEspecializacao())) {
             request.setEspecializacao(usuario.getEspecializacao());
         }
         mapper.update(usuario, request);
@@ -47,7 +47,7 @@ public class UsuarioService {
         return repository.save(usuario);
     }
 
-    public boolean existsUsuarioById(Long id){
+    public boolean existsUsuarioById(Long id) {
         return repository.existsById(id);
     }
 }

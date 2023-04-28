@@ -15,7 +15,7 @@ public class EstatisticasService {
         this.exameService = exameService;
     }
 
-    public ListagemDTO procurarEstatisticas(){
+    public ListagemDTO procurarEstatisticas() {
         ListagemDTO listagem = new ListagemDTO();
         listagem.setPacientes(pacienteService.contarPacientes());
         listagem.setConsultas(consultaService.contarConsultas());

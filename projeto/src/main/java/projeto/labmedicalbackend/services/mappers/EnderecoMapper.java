@@ -7,8 +7,9 @@ import projeto.labmedicalbackend.controllers.dtos.endereco.RequestCriarEnderecoD
 import projeto.labmedicalbackend.controllers.dtos.endereco.ResponseBuscarEnderecoDTO;
 import projeto.labmedicalbackend.models.Endereco;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING , unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface EnderecoMapper {
     Endereco map(RequestCriarEnderecoDTO source);
+
     ResponseBuscarEnderecoDTO map(Endereco source);
 }
