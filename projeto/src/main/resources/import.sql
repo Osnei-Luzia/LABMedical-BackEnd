@@ -10,11 +10,15 @@ INSERT INTO usuarios (crm, especializacao, senha, id) VALUES ('23130/SC', 0, 'dj
 
 INSERT INTO pessoas (id, cpf, data_nascimento, email, estado_civil, genero, naturalidade, nome_completo, rg, telefone) VALUES (default, '413.796.492-00', '21/02/1978', 'maite_rocha@picolotoengenharia.com.br', 3, 'Feminino', 'Brasileiro', 'Maitê Malu Rocha', '27.594.616-2', '(61) 98222-9417');
 INSERT INTO pacientes (contato_emergencia, convenio, endereco_id, numero_carteira, validade, id) VALUES ('(61) 3850-9502', 'Unimed', 1, '2543', '20/12/2033', 3);
-INSERT INTO paciente_lista_alergias (paciente_id, lista_alergias) VALUES (3, 'Cuidado 1', 'Cuidado 2', 'Cuidado 3');
-INSERT INTO paciente_lista_cuidados (paciente_id, lista_cuidados) VALUES (3, 'Alergia 2', 'Alergia 1');
+INSERT INTO paciente_lista_alergias (paciente_id, lista_alergias) VALUES (3, 'Alergia 1');
+INSERT INTO paciente_lista_alergias (paciente_id, lista_alergias) VALUES (3, 'Alergia 2');
+INSERT INTO paciente_lista_alergias (paciente_id, lista_alergias) VALUES (3, 'Alergia 3');
+INSERT INTO paciente_lista_cuidados (paciente_id, lista_cuidados) VALUES (3, 'Cuidado 2');
+INSERT INTO paciente_lista_cuidados (paciente_id, lista_cuidados) VALUES (3, 'Cuidado 1');
 INSERT INTO pessoas (id, cpf, data_nascimento, email, estado_civil, genero, naturalidade, nome_completo, rg, telefone) VALUES (default, '200.174.344-08', '09/03/1986', 'marcio_renato@saa.com.br', 3, 'Masculino', 'Brasileiro', 'Márcio Ryan Renato', '22.258.923-1', '(61) 98222-9417');
 INSERT INTO pacientes (contato_emergencia, convenio, endereco_id, numero_carteira, validade, id) VALUES ('(83) 2970-7661', 'Unimed', 3, '2312', '20/06/2033', 4);
-INSERT INTO paciente_lista_cuidados (paciente_id, lista_cuidados) VALUES (4, 'Alergia 2', 'Alergia 4');
+INSERT INTO paciente_lista_cuidados (paciente_id, lista_cuidados) VALUES (4, 'Cuidado 2');
+INSERT INTO paciente_lista_cuidados (paciente_id, lista_cuidados) VALUES (4, 'Cuidado 4');
 
 INSERT INTO consultas (id, data_hora, descricao, dosagens, medicacao, motivo, paciente_id_id, usuario_id_id) VALUES (default, '27/04/23 16:22:28,841000000', 'Descrição da consulta', 'Dosagens', 'Medicações', 'Motivo da Consulta', 3, 1);
 INSERT INTO consultas (id, data_hora, descricao, dosagens, medicacao, motivo, paciente_id_id, usuario_id_id) VALUES (default, '02/06/23 17:21:44,322000000', 'Descrição da consulta', 'Dosagens', 'Medicações', 'Motivo da Consulta', 4, 2);
