@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import projeto.labmedicalbackend.controllers.dtos.consulta.RequestAtualizarConsultaDTO;
 import projeto.labmedicalbackend.controllers.dtos.consulta.RequestCriarConsultaDTO;
 import projeto.labmedicalbackend.controllers.dtos.consulta.ResponseBuscarConsultaDTO;
-import projeto.labmedicalbackend.models.Consulta;
 import projeto.labmedicalbackend.services.ConsultaService;
 
 @RestController
@@ -23,7 +22,7 @@ public class ConsultaController {
     }
     @PostMapping
     public ResponseEntity<ResponseBuscarConsultaDTO> criarConsulta(@RequestBody @Validated RequestCriarConsultaDTO request){
-        return ResponseEntity.ok().body(service.salvarConsulta(request));//fazer created
+        return ResponseEntity.status(201).body(service.salvarConsulta(request));
     }
 
     @PutMapping("/{id}")

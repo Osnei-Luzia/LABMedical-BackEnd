@@ -46,8 +46,11 @@ public class ErrorHandler {
         String texto = e.getMessage();
         int start = texto.indexOf("models.enums.");
         int end = texto.indexOf("`",start);
-        texto = texto.substring(start+13,end)+" fora das opções válidas: "+e.getMessage().substring((e.getMessage().length() -6));
-        return ResponseEntity.status(400).body(texto);
+        String erro = texto.substring(start+13,end)+" fora das opções válidas: ";
+        start = texto.indexOf("[");
+        end = texto.indexOf("]");
+        erro = erro + texto.substring(start,end+1);
+        return ResponseEntity.status(400).body(erro);
     }
     @ExceptionHandler(EnumNullPointerException.class)
     public static ResponseEntity errorEnum(EnumNullPointerException e) {

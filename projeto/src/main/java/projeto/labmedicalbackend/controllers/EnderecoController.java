@@ -32,7 +32,6 @@ public class EnderecoController {
 
     @PostMapping
     public ResponseEntity<Endereco> cadastrarEndereco(@RequestBody @Validated RequestCriarEnderecoDTO request) {
-        return ResponseEntity.ok().body(service.salvarEndereco(request));//fazer created
-        //return ResponseEntity.created("{id}")
+        return ResponseEntity.status(201).body(service.salvarEndereco(request));
     }
 }

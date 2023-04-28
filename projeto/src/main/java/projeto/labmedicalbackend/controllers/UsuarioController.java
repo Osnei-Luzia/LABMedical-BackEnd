@@ -24,9 +24,7 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody @Validated RequestCriarUsuarioDTO request, UriComponentsBuilder uriBuilder) {
-        //URI uri = uriBuilder.path("/produtos/{id}").buildAndExpand().toUri();
-        //caminho e função que retorna o objeto
-        return ResponseEntity.status(201).body(service.salvarUsuario(request));//fazer created
+        return ResponseEntity.status(201).body(service.salvarUsuario(request));
     }
 
     @PutMapping("/{id}")

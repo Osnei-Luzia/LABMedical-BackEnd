@@ -25,7 +25,7 @@ public class ExameController {
 
     @PostMapping
     public ResponseEntity<ResponseBuscarExameDTO> criarExame(@RequestBody @Validated RequestCriarExameDTO request) {
-        return ResponseEntity.ok().body(service.salvarExame(request));//fazer created
+        return ResponseEntity.status(201).body(service.salvarExame(request));//fazer created
     }
 
     @PutMapping("/{id}")

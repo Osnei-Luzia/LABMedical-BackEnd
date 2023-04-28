@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ResponseBuscarEnderecoDTO {
+    private String id;
     private String cep;
     private String cidade;
     private String estado;

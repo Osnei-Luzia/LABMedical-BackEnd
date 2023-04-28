@@ -36,7 +36,7 @@ public class PacienteController {
 
     @PostMapping
     public ResponseEntity<ResponseBuscarPacienteDTO> criarPaciente(@RequestBody @Validated RequestCriarPacienteDTO request) {
-        return ResponseEntity.ok().body(service.salvarPaciente(request));//fazer created
+        return ResponseEntity.status(201).body(service.salvarPaciente(request));//fazer created
     }
 
     @PutMapping("/{idPaciente}")
