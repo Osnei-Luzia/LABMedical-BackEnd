@@ -12,6 +12,8 @@ import projeto.labmedicalbackend.exceptions.messages.ErrorRequestSide;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
@@ -41,10 +43,12 @@ public class ErrorHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public static ResponseEntity errorEnum(HttpMessageNotReadableException e) {
-        //manipular string
-        return ResponseEntity.status(400).body(e.getMessage());
+        String texto = e.getMessage();
+        int start = texto.indexOf("models.enums.");
+        int end = texto.indexOf("`",start);
+        texto = texto.substring(start+13,end)+" fora das opções válidas: "+e.getMessage().substring((e.getMessage().length() -6));
+        return ResponseEntity.status(400).body(texto);
     }
-
     @ExceptionHandler(EnumNullPointerException.class)
     public static ResponseEntity errorEnum(EnumNullPointerException e) {
         return ResponseEntity.status(400).body(e.getMessage());

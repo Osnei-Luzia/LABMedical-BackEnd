@@ -33,7 +33,7 @@ public class ConsultaService {
         if (Objects.isNull(request.getUsuario_id().getId()) || !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
             throw new DataExistsException("Usuário não cadastrado");
         }
-        request.setDataHora(new Date());//configurar timestamp?
+        request.setDataHora(new Date());
         ResponseBuscarConsultaDTO response = mapper.map(repository.save(mapper.map(request)));
         return response;
     }

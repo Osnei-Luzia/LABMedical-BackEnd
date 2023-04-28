@@ -16,7 +16,6 @@ import java.util.Objects;
 public class ExameService {
     private final ExameRepository repository;
     private final ExameMapper mapper;
-
     private final PacienteService pacienteService;
     private final UsuarioService usuarioService;
 
@@ -34,7 +33,7 @@ public class ExameService {
         if (Objects.isNull(request.getUsuario_id().getId()) || !usuarioService.existsUsuarioById(request.getUsuario_id().getId())) {
             throw new DataExistsException("Usuário não cadastrado");
         }
-        request.setDataHora(new Date());//configurar timestamp?
+        request.setDataHora(new Date());
         ResponseBuscarExameDTO response = mapper.map(repository.save(mapper.map(request)));
         return response;
     }

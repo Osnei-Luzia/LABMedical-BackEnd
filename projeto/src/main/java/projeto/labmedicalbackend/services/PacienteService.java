@@ -22,7 +22,6 @@ public class PacienteService {
     private final PacienteRepository repository;
     private final PacienteMapper mapper;
     private final EnderecoService enderecoService;
-
     private final ExameRepository exameRepository;
 
     public PacienteService(PacienteRepository repository, PacienteMapper mapper, EnderecoService enderecoService, ExameRepository exameRepository) {
