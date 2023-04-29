@@ -12,6 +12,7 @@ LABMedical BackEnd é uma API Rest para o sistema FrontEnd LABMedical, designado
 
 <br>
 <a id="funcoes"></a>
+
 ## Funcionalidades
 
 Sendo uma API Rest, o LABMedical BackEnd esta preparado para receber requisições HTTP para cadastros(POSTs), consultas(GETs), alterações(PUTs) ou remoções(DELETEs) no banco de dados. Além de uma contagem da quantidade de registros.
@@ -48,10 +49,12 @@ Também está incluso em seus arquivos, uma coleção de requests para teste em 
 
 <br>
 <a  id="cadastros"></a>
+
 ### Cadastros
 É possível o cadastro de Usuários(médicos), Pacientes, Consultas, Exames e Endereços. Todos devem vir por HTTP Requests de POST com corpo no formato JSON e todos recebem um Response com os dados recém cadastrados.
 <br>
 <a  id="cadastroUsuario"></a>
+
 #### Cadastro de Usuários
 O LABMedical BackEnd pode cadastrar Usuários por meio de requests POST no endereço "../api/usuarios", em formato JSON.
 Todos os campos são obrigatórios no cadastro de um usuário, sendo eles: Nome Completo, Genero, Data de Nascimento, CPF, RG, Estado Civil, Telefone, E-mail, Naturalidade, CRM, Especialização e Senha.
@@ -83,6 +86,7 @@ Exemplo do Request em JSON:
 <br>
 
 <a  id="cadastroPaciente"></a>
+
 #### Cadastro de Pacientes
 O cadastro de Pacientes é feito por meio de requests POST no endereço "../api/pacientes", em formato JSON.
 Os campos obrigatórios no cadastro de um paciente são: Nome Completo, Genero, Data de Nascimento, CPF, RG, Estado Civil, Telefone, E-mail, Naturalidade, Contato de Emergência, Id de Endereço.
@@ -123,6 +127,7 @@ Exemplo do Request em JSON:
 <br>
 
 <a  id="cadastroExame"></a>
+
 #### Cadastro de Exames
 O cadastro de Exames é feito por meio de requests POST no endereço "../api/exames", em formato JSON.
 Os campos obrigatórios no cadastro de um exame são: Nome, Data e Hora, Tipo, Laboratório, Resultado, Id de paciente e Id de Usuário.
@@ -153,6 +158,7 @@ Exemplo do Request em JSON:
 ```
 <br>
 <a  id="cadastroEndereco"></a>
+
 #### Cadastro de Endereços
 O cadastro de Endereços é feito por meio de requests POST no endereço "../api/enderecos", em formato JSON.
 Os campos obrigatórios no cadastro de um endereço são: CEP, Cidade, Estado, Logradouro, Número, Bairro.
@@ -173,10 +179,12 @@ Exemplo do Request em JSON:
 ```
 <br>
 <a id="consultas"></a>
+
 ### Consultas
 É possível consultar os registros de Pacientes, Consultas, Exames, uma contagem dos mesmos, além da Consulta de Endereços. Todos devem vir por HTTP Requests de GET sem a necessidade de um corpo em JSON.
 <br>
 <a id="consultaPaciente"></a>
+
 #### Consulta de Pacientes
 A consulta de Pacientes pode ser feita de três maneiras: Buscar todos, Buscar por Nome, Buscar por Id. Todas são feitas por Requests de GET e recebem uma resposta em JSON.
 
@@ -230,6 +238,7 @@ Exemplo do Response em JSON:
 ```
 <br>
 <a id="consultaConsulta"></a>
+
 #### Consulta de Consultas
 A consulta de Consultas pode ser feita apenas por Id com Requests de GET  no endereço "../api/consultas/{id}" e recebem uma resposta em JSON.
 
@@ -248,6 +257,7 @@ Exemplo do Response em JSON:
 ```
 <br>
 <a id="consultaExame"></a>
+
 #### Consulta de Exames
 A consulta de Exames pode ser feita apenas por Id com Requests de GET  no endereço "../api/exames/{id}" e recebem uma resposta em JSON.
 
@@ -268,6 +278,7 @@ Exemplo do Response em JSON:
 <br>
 
 <a id="consultaEnderecos"></a>
+
 #### Consulta de Endereços
 A consulta de Endereços é feita por Requests GET no endereço "../api/enderecos", e retorna uma resposta em JSON com todos os registros.
 
@@ -287,6 +298,7 @@ Exemplo do Response em JSON:
 ```
 <br>
 <a id="consultaEstatisticas"></a>
+
 #### Consulta de Estatísticas
 A consulta de estatísticas pode ser feita por Request GET no endereço "../api/estatisticas" e recebe a quantidade de pacientes, consultas e exames cadastrados em formato JSON.
 
@@ -300,11 +312,13 @@ Exemplo do Response em JSON:
 ```
 <br>
 <a id="atualizacao"></a>
+
 ### Atualização
 É possível realizar alterações nos registros de Usuários(médicos), Pacientes, Consultas e Exames. Todas devem vir por HTTP Requests de PUT com corpo no formato JSON.
 <br>
 
 <a id="atualizacaoUsuario"></a>
+
 #### Atualização de Usuários
 A alteração de dados de Usuários é dividida em dois endereços, ambos requerem um número para Id correspondente á um registro de usuário dentro do sistema como caminho na URL, por exemplo "../api/usuarios/{id}". Um endereço serve únicamente para alteração de senha e outro para os demais campos.
 
@@ -335,6 +349,7 @@ Exemplo do Request em JSON para os demais campos, comparado com o request de cad
 ```
 <br>
 <a id="atualizacaoPaciente"></a>
+
 #### Atualização de Pacientes
 A alteração de dados de Pacientes é feita no endereço "../api/pacientes/{id}" e requer um número correspondente ao id de paciente previamente cadastrado no sistema como caminho da URL.
 
@@ -363,6 +378,7 @@ Exemplo do Request em JSON, comparado com o request de cadastro,  alguns campos 
 ```
 <br>
 <a id="atualizacaoConsulta"></a>
+
 #### Atualização de Consultas
 A alteração de dados de Consultas é feita no endereço "../api/consultas/{id}" e requer um número correspondente ao id de consulta previamente cadastrada no sistema como caminho da URL.
 
@@ -384,6 +400,7 @@ Exemplo do Request em JSON, comparado com o request de cadastro,  alguns campos 
 ```
 <br>
 <a id="atualizacaoExame"></a>
+
 #### Atualização de Exames
 A alteração de dados de Exames é feita no endereço "../api/exames/{id}" e requer um número correspondente ao id de exame previamente cadastrado no sistema como caminho da URL.
 
@@ -407,11 +424,13 @@ Exemplo do Request em JSON, comparado com o request de cadastro,  alguns campos 
 <br>
 
 <a id="delecao"></a>
+
 ### Deleção
 É possível realizar a deleçao de Pacientes, Consultas e Exames. Todas devem vir por HTTP Requests de DELETE sem necessidade de corpo.
 
 <br>
 <a id="delecaoPaciente"></a>
+
 #### Deleção de Pacientes
 A deleção de pacientes é feita por Request DELETE no endereço "../api/pacientes/{id}" e um número correspondente a um id válido de paciente deve ser inserido como caminho na URL.
 
@@ -421,6 +440,7 @@ Em caso de sucesso, será retornado o status "204 No content".
 
 <br>
 <a id="delecaoConsulta"></a>
+
 #### Deleção de Consultas
 A deleção de Consultas é feita por Request DELETE no endereço "../api/consultas/{id}" e um número correspondente a um id válido de consulta deve ser inserido como caminho na URL.
 
@@ -428,6 +448,7 @@ Em caso de sucesso, será retornado o status "204 No content".
 
 <br>
 <a id="delecaoExame"></a>
+
 #### Deleção de Exames
 A deleção de Exames é feita por Request DELETE no endereço "../api/exames/{id}" e um número correspondente a um id válido de exame deve ser inserido como caminho na URL.
 
@@ -435,6 +456,7 @@ Em caso de sucesso, será retornado o status "204 No content".
 
 <br>
 <a id="tech"></a>
+
 ## Tecnologias
 
 É utilizado para seu funcionamento:
@@ -448,6 +470,7 @@ Em caso de sucesso, será retornado o status "204 No content".
 <br>
 
 <a id="install"></a>
+
 ## Instalação
 Por se tratar de uma API Rest, o LABMedical BackEnd não possuí views. É necessário uma plataforma para envios de requests HTTPs como por exemplo o Postman para a interação com o sistema.
 
@@ -491,6 +514,7 @@ spring.jpa.hibernate.ddl-auto=update
 <br>
 
 <a id="melhorias"></a>
+
 ## Melhorias
 
 Os critérios mais gerais que poderiam ser melhorados seriam de refatoração de código, e estabelecimento de regras de negócios mais claras e objetivas de acordo com a aplicação final do LABMedical como um todo, como por exemplo, diretivas para tratamento de erros.
