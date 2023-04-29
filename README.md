@@ -74,12 +74,12 @@ Exemplo do Request em JSON:
 	"dataNascimento": "13/12/1313",
 	"cpf": "664.097.772-99",
 	"rg": "24.119.173-7",
-    "estadoCivil":4,
+    	"estadoCivil":4,
 	"telefone": "(61) 2741-8782",
 	"email": "olivia_freitas@gradu.if.ufrj.br",
-    "naturalidade":"Brasileiro",
-    "crm":"CRM/SP 124456",
-    "especializacao":1,
+   	"naturalidade":"Brasileiro",
+   	"crm":"CRM/SP 124456",
+   	"especializacao":1,
 	"senha": "O3OPges3nY"
 }
 ```
@@ -108,20 +108,20 @@ Exemplo do Request em JSON:
 	"dataNascimento": "12/12/2222",
 	"cpf": "034.049.590-19",
 	"rg": "24.175.545-1",
-    "estadoCivil":3,
+	"estadoCivil":3,
 	"telefone": "(19) 3722-2241",
 	"email": "ruan_viana@diebold.com",
-    "naturalidade":"Brasileiro",
-    "listaAlergias":["Alergia 1", "Alergia 2"],
-    "listaCuidados":["Cuidado 1", "Cuidado 2"],
-    "contatoEmergencia":"(19) 3557-4456",
-    "convenio":"Unimed",
-    "numeroCarteira":"12413",
-    "validade":"20/12/2040",
-    "endereco":
-    {
-        "id":1
-    }
+	"naturalidade":"Brasileiro",
+	"listaAlergias":["Alergia 1", "Alergia 2"],
+	"listaCuidados":["Cuidado 1", "Cuidado 2"],
+	"contatoEmergencia":"(19) 3557-4456",
+	"convenio":"Unimed",
+	"numeroCarteira":"12413",
+	"validade":"20/12/2040",
+	"endereco":
+	{
+	     "id":1
+	}
 }
 ```
 <br>
@@ -167,14 +167,14 @@ Os campos não obrigatórios são: Complemento e Ponto de Referência.
 Exemplo do Request em JSON:
 ```
 {
-    "cep": "70687-110",
+   	"cep": "70687-110",
 	"cidade": "Brasília",
 	"estado": "DF",
 	"logradouro": "Quadra SQNW 309 Bloco B",
 	"numero": 770,
-    "complemento":"complemento",
+   	"complemento":"complemento",
 	"bairro": "Setor Noroeste",
-    "pontoReferencia":"Esquina"
+  	"pontoReferencia":"Esquina"
 }
 ```
 <br>
@@ -285,16 +285,16 @@ A consulta de Endereços é feita por Requests GET no endereço "../api/endereco
 Exemplo do Response em JSON:
 ```
 {
-        "id": "1",
-        "cep": "75102-075",
-        "cidade": "Anápolis",
-        "estado": "GO",
-        "logradouro": "Rua AV 12",
-        "numero": 920,
-        "complemento": "Esquina com Rua 1001",
-        "bairro": "Residencial Anaville",
-        "pontoReferencia": "Esquina"
-    }
+	"id": "1",
+	"cep": "75102-075",
+	"cidade": "Anápolis",
+	"estado": "GO",
+	"logradouro": "Rua AV 12",
+	"numero": 920,
+	"complemento": "Esquina com Rua 1001",
+	"bairro": "Residencial Anaville",
+	"pontoReferencia": "Esquina"
+}
 ```
 <br>
 <a id="consultaEstatisticas"></a>
@@ -343,8 +343,8 @@ Exemplo do Request em JSON para os demais campos, comparado com o request de cad
 	"genero": "Feminino",
 	"dataNascimento": "12/12/2000",
 	"telefone": "(61) 2741-8782",
-    "naturalidade":"Brasileiro",
-    "especializacao":5
+ 	"naturalidade":"Brasileiro",
+ 	"especializacao":5
 }
 ```
 <br>
@@ -365,15 +365,15 @@ Exemplo do Request em JSON, comparado com o request de cadastro,  alguns campos 
 	"dataNascimento": "20/12/1980",
 	"telefone": "(19) 3722-2241",
 	"email": "ruan_viana@diebold.com",
-    "listaAlergias":["outra alergia"],
-    "listaCuidados":[],
-    "contatoEmergencia":"(19) 3557-4456",
-    "numeroCarteira":"12413",
-    "validade":"20/12/2020",
-    "endereco":
-    {
-        "id":4
-    }
+    	"listaAlergias":["outra alergia"],
+ 	"listaCuidados":[],
+  	"contatoEmergencia":"(19) 3557-4456",
+  	"numeroCarteira":"12413",
+  	"validade":"20/12/2020",
+  	"endereco":
+ 	{
+  	   "id":4
+ 	}
 }
 ```
 <br>
