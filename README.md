@@ -27,6 +27,8 @@ Também está incluso em seus arquivos, uma coleção de requests para teste em 
 - Possui uma coleção de requests JSON para testes.
 - Todas as inserções possuem mensagens de erro legíveis ao usuário.
 
+### Funcionalidades
+
 1. [Cadastros](#cadastros)
 1.1 [Cadastro de Usuário](#cadastroUsuario)
 1.2 [Cadastro de Paciente](#cadastroPaciente)
