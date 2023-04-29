@@ -36,7 +36,6 @@ Também está incluso em seus arquivos, uma coleção de requests para teste em 
 2.1 [Consulta de Pacientes](#consultaPaciente)
 2.2 [Consulta de Consultas](#consultaConsulta)
 2.3 [Consulta de Exames](#consultaExame)
-2.4 [Consulta de Endereços](#consultaEndereco)
 2.5 [Consulta de Estatísticas](#consultaEstatisticas)
 3. [Atualizações](#atualizacao)
 3.1 [Atualização de Usuários](#atualizacaoUsuario)
@@ -277,7 +276,7 @@ Exemplo do Response em JSON:
 ```
 <br>
 
-<a id="consultaEnderecos"></a>
+<a id="consultaEndereco"></a>
 
 #### Consulta de Endereços
 A consulta de Endereços é feita por Requests GET no endereço "../api/enderecos", e retorna uma resposta em JSON com todos os registros.
