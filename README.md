@@ -15,14 +15,14 @@ LABMedical BackEnd é uma API Rest para o sistema FrontEnd LABMedical, designado
 
 ## Funcionalidades
 
-Sendo uma API Rest, o LABMedical BackEnd esta preparado para receber requisições HTTP para cadastros(POSTs), consultas(GETs), alterações(PUTs) ou remoções(DELETEs) no banco de dados. Além de uma contagem da quantidade de registros.
-A API está em modo de teste, então possui registros fictícios(seeders) inclusos no código e o banco de dados está configurado para "Create-Drop", o que resulta em uma limpeza do banco em sua inicialização, criação de novas tabelas, população destas tabelas. E ao encerrar a aplicação, os tabelas são mais uma vez finalizadas.
+Sendo uma API Rest, o LABMedical BackEnd esta preparado para receber requisições HTTP para cadastros (POSTs), consultas (GETs), alterações (PUTs) ou remoções (DELETEs) no banco de dados. Além de uma contagem da quantidade de registros.
+A API está em modo de teste, então possui registros fictícios (seeders) inclusos no código e o banco de dados está configurado para "Create-Drop", o que resulta em uma limpeza do banco em sua inicialização, criação de novas tabelas e preenchimento destas tabelas. Ao encerrar a aplicação, as tabelas são mais uma vez finalizadas.
 Também está incluso em seus arquivos, uma coleção de requests para teste em formato JSON, este pode ser usado por exemplo com o Postman.
 
-- Cadastro de Usuários(médicos), Pacientes, Consultas, Exames e Endereços.
+- Cadastro de Usuários (médicos), Pacientes, Consultas, Exames e Endereços.
 - Consultas de Pacientes, Exames, Consultas e Endereços. 
 - Listagem da quantidade de registros de Pacientes, Exames e Consultas.
-- Possui uma base de dados(seeders) para testes, inclusa no código.
+- Possui uma base de dados (seeders) para testes, inclusa no código.
 - Está configurado para limpeza do banco tanto na inicialização quanto encerramento da aplicação.
 - Possui uma coleção de requests JSON para testes.
 - Todas as inserções possuem mensagens de erro legíveis ao usuário.
@@ -45,27 +45,27 @@ Também está incluso em seus arquivos, uma coleção de requests para teste em 
 3.3 [Atualização de Consultas](#atualizacaoConsulta)
 4. [Deleção](#delecao)
 4.1 [Deleção de Pacientes](#delecaoPaciente)
-4.2 [Deleção de Consultas](#delecaoExame)
-4.3 [Deleção de Exames](#delecaoConsulta)
+4.2 [Deleção de Consultas](#delecaoConsulta)
+4.3 [Deleção de Exames](#delecaoExame)
 
 <br>
 <a  id="cadastros"></a>
 
 ### Cadastros
-É possível o cadastro de Usuários(médicos), Pacientes, Consultas, Exames e Endereços. Todos devem vir por HTTP Requests de POST com corpo no formato JSON e todos recebem um Response com os dados recém cadastrados.
+É possível o cadastro de Usuários (médicos), Pacientes, Consultas, Exames e Endereços. Todos devem vir por HTTP Requests de POST com corpo no formato JSON e todos recebem um Response com os dados recém cadastrados.
 <br>
 <a  id="cadastroUsuario"></a>
 
 #### Cadastro de Usuários
 O LABMedical BackEnd pode cadastrar Usuários por meio de requests POST no endereço "../api/usuarios", em formato JSON.
-Todos os campos são obrigatórios no cadastro de um usuário, sendo eles: Nome Completo, Genero, Data de Nascimento, CPF, RG, Estado Civil, Telefone, E-mail, Naturalidade, CRM, Especialização e Senha.
+Todos os campos são obrigatórios no cadastro de um usuário, sendo eles: Nome Completo, Gênero, Data de Nascimento, CPF, RG, Estado Civil, Telefone, E-mail, Naturalidade, CRM, Especialização e Senha.
 
 - O campo Data de Nascimento deve ser preenchido por uma data válida e dentro do formato "dd/mm/aaaa".
 - O campo CPF deve ser preenchido por um CPF válido.
-- O campo Estado Civil deve ser preenchido pelas seguintes opções: "SOLTEIRO", "CASADO", "SEPARADO", "DIVORCIADO", "VIUVO". Ou pela sua correspondência numérica, na mesma ordem, de 0 a 4.
+- O campo Estado Civil deve ser preenchido pelas seguintes opções: "SOLTEIRO", "CASADO", "SEPARADO", "DIVORCIADO", "VIÚVO". Ou pela sua correspondência numérica, na mesma ordem, de 0 a 4.
 - O campo E-mail deve ser preenchido por um e-mail válido no formato "exemplo@exemplo.com".
 - O campo Especialização deve ser preenchido pelas seguintes opções: "CLINICO_GERAL", "ANESTESISTA", "DERMATOLOGIA", "GINECOLOGIA", "NEUROLOGIA", "PEDIATRIA", "PSIQUIATRIA", "ORTOPEDIA". Ou pela sua correspondência numérica, na mesma ordem, de 0 a 7.
-- O campo Senha deve conter no mínimo 8 caractéres e apenas caractéres alfanuméricos.
+- O campo Senha deve conter no mínimo 8 caractéres e apenas caracteres alfanuméricos.
 
 Exemplo do Request em JSON:
 ```
@@ -90,12 +90,12 @@ Exemplo do Request em JSON:
 
 #### Cadastro de Pacientes
 O cadastro de Pacientes é feito por meio de requests POST no endereço "../api/pacientes", em formato JSON.
-Os campos obrigatórios no cadastro de um paciente são: Nome Completo, Genero, Data de Nascimento, CPF, RG, Estado Civil, Telefone, E-mail, Naturalidade, Contato de Emergência, Id de Endereço.
-Os campos não obrigatórios são: Lista de Alergias, Lista de Cuidados, Convênio, Número da Carteira do Convênio, Validade do Convênio.
+Os campos obrigatórios no cadastro de um paciente são: Nome Completo, Gênero, Data de Nascimento, CPF, RG, Estado Civil, Telefone, E-mail, Naturalidade, Contato de Emergência e Id de Endereço.
+Os campos não obrigatórios são: Lista de Alergias, Lista de Cuidados, Convênio, Número da Carteira do Convênio e Validade do Convênio.
 
 - O campo Data de Nascimento deve ser preenchido por uma data válida e dentro do formato "dd/mm/aaaa".
 - O campo CPF deve ser preenchido por um CPF válido.
-- O campo Estado Civil deve ser preenchido pelas seguintes opções: "SOLTEIRO", "CASADO", "SEPARADO", "DIVORCIADO", "VIUVO". Ou pela sua correspondência numérica, na mesma ordem, de 0 a 4.
+- O campo Estado Civil deve ser preenchido pelas seguintes opções: "SOLTEIRO", "CASADO", "SEPARADO", "DIVORCIADO", "VIÚVO". Ou pela sua correspondência numérica, na mesma ordem, de 0 a 4.
 - O campo E-mail deve ser preenchido por um e-mail válido no formato "exemplo@exemplo.com".
 - O campo Id de Endereço deve ser preenchido com um número correspondente a um registro de endereço previamente cadastrado no sistema.
 - Ambas as listas recebem uma lista de textos, então seus registros devem ser feitos por um array de strings como demonstrado no exemplo do request.
@@ -132,11 +132,11 @@ Exemplo do Request em JSON:
 #### Cadastro de Exames
 O cadastro de Exames é feito por meio de requests POST no endereço "../api/exames", em formato JSON.
 Os campos obrigatórios no cadastro de um exame são: Nome, Data e Hora, Tipo, Laboratório, Resultado, Id de paciente e Id de Usuário.
-Os campos não obrigatórios são: Arquivo do Exame.
+O campo não obrigatório é: Arquivo do Exame.
 
-- O campo de Data e Hora é preenchido automáticamente pelo sistema após a verificação de todos os outros campos, este fica como uma marcação de tempo no momento do cadastro.
+- O campo de Data e Hora é preenchido automaticamente pelo sistema após a verificação de todos os outros campos, este fica como uma marcação de tempo no momento do cadastro.
 - O campo de Id de Paciente deve ser preenchido com um número correspondente a um registro de paciente previamente cadastrado.
-- O campo de Id de Usuario deve ser preenchido com um número correspondente a um registro de usuario previamente cadastrado.
+- O campo de Id de Usuário deve ser preenchido com um número correspondente a um registro de usuário previamente cadastrado.
 - O campo de Arquivo do Exame se preenchido, deve ser apenas a URL de um arquivo.
 
 Exemplo do Request em JSON:
@@ -162,7 +162,7 @@ Exemplo do Request em JSON:
 
 #### Cadastro de Endereços
 O cadastro de Endereços é feito por meio de requests POST no endereço "../api/enderecos", em formato JSON.
-Os campos obrigatórios no cadastro de um endereço são: CEP, Cidade, Estado, Logradouro, Número, Bairro.
+Os campos obrigatórios no cadastro de um endereço são: CEP, Cidade, Estado, Logradouro, Número e Bairro.
 Os campos não obrigatórios são: Complemento e Ponto de Referência.
 
 Exemplo do Request em JSON:
@@ -187,7 +187,7 @@ Exemplo do Request em JSON:
 <a id="consultaPaciente"></a>
 
 #### Consulta de Pacientes
-A consulta de Pacientes pode ser feita de três maneiras: Buscar todos, Buscar por Nome, Buscar por Id. Todas são feitas por Requests de GET e recebem uma resposta em JSON.
+A consulta de Pacientes pode ser feita de três maneiras: Buscar todos, Buscar por Nome e Buscar por Id. Todas são feitas por Requests de GET e recebem uma resposta em JSON.
 
 - A consulta de todos os pacientes é feita pelo endereço "../api/pacientes".
 - A consulta por Nome dos pacientes é feita pelo endereço "../api/pacientes", mas requer um parâmetro "nome" na URL, por exemplo "../api/pacientes?nome=Maitê Malu Rocha"
@@ -314,14 +314,14 @@ Exemplo do Response em JSON:
 <br>
 <a id="atualizacao"></a>
 
-### Atualização
-É possível realizar alterações nos registros de Usuários(médicos), Pacientes, Consultas e Exames. Todas devem vir por HTTP Requests de PUT com corpo no formato JSON.
+### Atualizações
+É possível realizar alterações nos registros de Usuários (médicos), Pacientes, Consultas e Exames. Todas devem vir por HTTP Requests de PUT com corpo no formato JSON.
 <br>
 
 <a id="atualizacaoUsuario"></a>
 
 #### Atualização de Usuários
-A alteração de dados de Usuários é dividida em dois endereços, ambos requerem um número para Id correspondente á um registro de usuário dentro do sistema como caminho na URL, por exemplo "../api/usuarios/{id}". Um endereço serve únicamente para alteração de senha e outro para os demais campos.
+A alteração de dados de Usuários é dividida em dois endereços, ambos requerem um número para Id correspondente a um registro de usuário dentro do sistema como caminho na URL, por exemplo "../api/usuarios/{id}". Um endereço serve unicamente para alteração de senha e outro para os demais campos.
 
 - Alteração do campo senha é feita no endereço: "../api/usuarios/{id}/senha"
 - Alteração dos demais campos é feita no endereço: "../api/usuarios/{id}"
@@ -356,7 +356,7 @@ A alteração de dados de Pacientes é feita no endereço "../api/pacientes/{id}
 
 Todos os campos obrigatórios do cadastro de paciente ainda são obrigatórios na alteração, porém, caso não haja interesse em alterar certos campos, é possível a omissão dos mesmos para mantê-los sem alteração.
 
-Em caso de sucesso, é enviado um response com todos os dados do paciente que tenha sido alterado.
+Em caso de sucesso, é enviado um response com todos os dados do paciente modificado.
 
 Exemplo do Request em JSON, comparado com o request de cadastro,  alguns campos estão omitidos:
 ```
@@ -385,7 +385,7 @@ A alteração de dados de Consultas é feita no endereço "../api/consultas/{id}
 
 Todos os campos obrigatórios do cadastro de consulta ainda são obrigatórios na alteração, porém, caso não haja interesse em alterar certos campos, é possível a omissão dos mesmos para mantê-los sem alteração.
 
-Em caso de sucesso, é enviado um response com todos os dados da consulta que tenha sido alterada.
+Em caso de sucesso, é enviado um response com todos os dados da consulta modificada.
 
 Exemplo do Request em JSON, comparado com o request de cadastro,  alguns campos estão omitidos:
 ```
@@ -407,7 +407,7 @@ A alteração de dados de Exames é feita no endereço "../api/exames/{id}" e re
 
 Todos os campos obrigatórios do cadastro de exame ainda são obrigatórios na alteração, porém, caso não haja interesse em alterar certos campos, é possível a omissão dos mesmos para mantê-los sem alteração.
 
-Em caso de sucesso, é enviado um response com todos os dados do exame que tenha sido alterado.
+Em caso de sucesso, é enviado um response com todos os dados do exame modificado.
 
 Exemplo do Request em JSON, comparado com o request de cadastro,  alguns campos estão omitidos:
 ```
@@ -473,11 +473,11 @@ Em caso de sucesso, será retornado o status "204 No content".
 <a id="install"></a>
 
 ## Instalação
-Por se tratar de uma API Rest, o LABMedical BackEnd não possuí views. É necessário uma plataforma para envios de requests HTTPs como por exemplo o Postman para a interação com o sistema.
+Por se tratar de uma API Rest, o LABMedical BackEnd não possui views. É necessária uma plataforma para envios de requests HTTPs como por exemplo o Postman para a interação com o sistema.
 
 O LABMedical BackEnd está configurado para a conexão com o banco de dados Oracle, porém a instalação do próprio Oracle independe desta API. É possível a utilização de outros bancos relacionais como MySQL, apenas realize alterações no arquivo "..\LABMedical-BackEnd\projeto\src\main\resources\application.properties".
 
-Para a conexão com o Banco de Dados
+Para a conexão com o Banco de Dados:
 ```
 #URL do banco de dados desejado
 spring.datasource.url= jdbc:oracle:thin:@localhost:1521/labmedicalbd
@@ -487,17 +487,17 @@ spring.datasource.username= sys as sysdba
 spring.datasource.password= admin
 ```
 
-Driver para o Banco de Dados
+Driver para o Banco de Dados:
 ```
 spring.datasource.driver-class-name= oracle.jdbc.OracleDriver
 ```
 
-Caso o Oracle não seja usado, remova ou altere a seguinte linha, responsável pelo dialéto de SQL utilizado pelo Hibernate.
+Caso o Oracle não seja usado, remova ou altere a seguinte linha, responsável pelo dialeto de SQL utilizado pelo Hibernate:
 ```
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle12cDialect
 ```
 
-Caso haja a necessidade da remoção dos dados de teste(seeders), remove as seguintes linhas do mesmo arquivo.
+Caso haja a necessidade da remoção dos dados de teste (seeders), deve-se remover as seguintes linhas do mesmo arquivo:
 ```
 # Garantir a inserção de seeders após a inicialização do db
 spring.jpa.defer-datasource-initialization=true
@@ -518,10 +518,10 @@ spring.jpa.hibernate.ddl-auto=update
 
 ## Melhorias
 
-Os critérios mais gerais que poderiam ser melhorados seriam de refatoração de código, e estabelecimento de regras de negócios mais claras e objetivas de acordo com a aplicação final do LABMedical como um todo, como por exemplo, diretivas para tratamento de erros.
+Os critérios mais gerais que poderiam ser melhorados seriam de refatoração de código e estabelecimento de regras de negócios mais claras e objetivas de acordo com a aplicação final do LABMedical como um todo, como por exemplo, diretivas para tratamento de erros.
 
 Duas melhorias necessárias para uma futura versão:
-- A implementação de segurança, como por exemplo a verificação por JWT e a criptografia das senhas utilizadas pelos Usuarios(médicos) do sistema.
+- A implementação de segurança, como por exemplo a verificação por JWT e a criptografia das senhas utilizadas pelos Usuarios (médicos) do sistema.
 - A implementação de paginação para todas as consultas para coleções realizadas no banco de dados.
 
 
