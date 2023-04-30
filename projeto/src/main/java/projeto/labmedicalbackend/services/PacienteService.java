@@ -68,13 +68,16 @@ public class PacienteService {
             lista = repository.findAll().stream().map(
                             paciente -> mapper.map(paciente))
                     .collect(Collectors.toList());
+            if (lista.size() < 1) {
+                throw new DataExistsException("Não há pacientes cadastrados");
+            }
         } else {
             lista = repository.findAllByNomeCompleto(nome).stream().map(
                             paciente -> mapper.map(paciente))
                     .collect(Collectors.toList());
-        }
-        if (lista.size() < 1) {
-            throw new DataExistsException("Não há pacientes cadastrados");
+            if (lista.size() < 1) {
+                throw new DataExistsException("Paciente não encontrado");
+            }
         }
         for (ResponseBuscarPacienteDTO paciente : lista) {
             paciente.setExames(exameRepository.findAllByPaciente_id(paciente.getId()));
