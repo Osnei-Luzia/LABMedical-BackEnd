@@ -62,16 +62,17 @@ public class PacienteService {
         return paciente;
     }
 
-    public ResponseBuscarPacienteDTO procurarPacientesByNome(String nome) {
-        ResponseBuscarPacienteDTO paciente = mapper.map(repository.findByNomeCompleto(nome).orElseThrow(() -> new DataExistsException("Paciente não encontrado")));
-        paciente.setExames(exameRepository.findAllByPaciente_id(paciente.getId()));
-        return paciente;
-    }
-
-    public List<ResponseBuscarPacienteDTO> procurarPacientes() {
-        List<ResponseBuscarPacienteDTO> lista = repository.findAll().stream().map(
-                        paciente -> mapper.map(paciente))
-                .collect(Collectors.toList());
+    public List<ResponseBuscarPacienteDTO> procurarPacientes(String nome) {
+        List<ResponseBuscarPacienteDTO> lista;
+        if (Objects.isNull(nome)) {
+            lista = repository.findAll().stream().map(
+                            paciente -> mapper.map(paciente))
+                    .collect(Collectors.toList());
+        } else {
+            lista = repository.findAllByNomeCompleto(nome).stream().map(
+                            paciente -> mapper.map(paciente))
+                    .collect(Collectors.toList());
+        }
         if (lista.size() < 1) {
             throw new DataExistsException("Não há pacientes cadastrados");
         }
