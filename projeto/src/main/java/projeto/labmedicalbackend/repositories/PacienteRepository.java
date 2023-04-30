@@ -5,11 +5,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import projeto.labmedicalbackend.models.Paciente;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
     boolean existsPacienteByCpf(@Param("cpf") String cpf);
 
-    Optional<Paciente> findByNomeCompleto(@Param("nome") String nome);
+    List<Paciente> findAllByNomeCompleto(@Param("nome") String nome);
 }

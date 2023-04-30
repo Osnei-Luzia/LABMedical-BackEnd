@@ -10,6 +10,7 @@ import projeto.labmedicalbackend.models.Paciente;
 import projeto.labmedicalbackend.services.PacienteService;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/pacientes")
@@ -21,14 +22,9 @@ public class PacienteController {
         this.service = service;
     }
 
-    @GetMapping(params = "nome")
-    public ResponseEntity<ResponseBuscarPacienteDTO> buscarPacientesByNome(@RequestParam String nome) {
-        return ResponseEntity.ok().body(service.procurarPacientesByNome(nome));
-    }
-
     @GetMapping
-    public ResponseEntity<List<ResponseBuscarPacienteDTO>> buscarPacientes() {
-        return ResponseEntity.ok().body(service.procurarPacientes());
+    public ResponseEntity<List<ResponseBuscarPacienteDTO>> buscarPacientes(@RequestParam(required = false) String nome) {
+        return ResponseEntity.ok().body(service.procurarPacientes(nome));
     }
 
     @GetMapping("/{id}")
